@@ -1041,9 +1041,76 @@ select {
   line-height: 1.7;
 }
 
-@media (min-width: 1101px) and (max-height: 820px) {
+/* Keep navigation spacious; scroll only when a very short window needs it. */
+@media (min-width: 1101px) {
+  .sidebar {
+    overflow-x: hidden;
+    overscroll-behavior-y: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #cec2de transparent;
+  }
+  .sidebar:hover,
+  .sidebar:focus-within {
+    scrollbar-color: #a28ab8 transparent;
+  }
+  .sidebar > * {
+    flex-shrink: 0;
+  }
+  .sidebar::-webkit-scrollbar {
+    width: 8px;
+  }
+  .sidebar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .sidebar::-webkit-scrollbar-thumb {
+    min-height: 40px;
+    border: 2px solid transparent;
+    border-radius: 999px;
+    background: #cec2de;
+    background-clip: padding-box;
+  }
+  .sidebar::-webkit-scrollbar-thumb:hover {
+    background-color: #a28ab8;
+  }
+}
+@media (min-width: 1101px) and (max-height: 950px) {
   .sidebar-note {
     display: none;
+  }
+}
+@media (min-width: 1101px) and (max-height: 680px) {
+  .sidebar {
+    padding-block: 20px;
+  }
+  .sidebar-tagline,
+  .nav-caption {
+    display: none;
+  }
+  .sidebar .main-nav {
+    margin-top: 16px;
+  }
+  .sidebar-bottom {
+    padding-top: 16px;
+  }
+}
+@media (min-width: 1101px) and (max-height: 560px) {
+  .sidebar {
+    padding: 16px;
+  }
+  .sidebar .brand {
+    line-height: 1.2;
+  }
+  .sidebar .main-nav {
+    gap: 4px;
+    margin-top: 12px;
+  }
+  .sidebar .nav-item {
+    min-height: 48px;
+    padding: 8px 12px;
+    gap: 10px;
+  }
+  .sidebar-bottom {
+    padding-top: 8px;
   }
 }
 @media (min-width: 1101px) and (max-width: 1350px) {
