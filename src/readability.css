@@ -1136,13 +1136,6 @@ select {
   .nav-count {
     display: none;
   }
-  .nav-item:first-child span:not(.nav-count) {
-    font-size: 0;
-  }
-  .nav-item:first-child span:not(.nav-count):after {
-    content: "Прогресс";
-    font-size: 14px;
-  }
   .workspace {
     margin-left: 0;
     padding-bottom: calc(var(--nav-height) + env(safe-area-inset-bottom));
@@ -1598,21 +1591,6 @@ select {
     min-height: 64px;
     gap: 6px;
   }
-  .nav-item:first-child span:not(.nav-count):after {
-    font-size: 12px;
-  }
-  .nav-item:nth-child(3) span:not(.nav-count),
-  .nav-item:nth-child(5) span:not(.nav-count) {
-    font-size: 0;
-  }
-  .nav-item:nth-child(3) span:not(.nav-count):after {
-    content: "Словарь";
-    font-size: 12px;
-  }
-  .nav-item:nth-child(5) span:not(.nav-count):after {
-    content: "Слушать";
-    font-size: 12px;
-  }
   .reader-page {
     padding: 20px 16px 28px;
   }
@@ -2029,9 +2007,6 @@ select {
   .nav-item {
     font-size: 12px;
   }
-  .nav-item:first-child span:not(.nav-count):after {
-    font-size: 12px;
-  }
   .reading-paper {
     padding-inline: 20px;
   }
@@ -2065,11 +2040,6 @@ select {
 
 @media (max-width: 680px) {
   .nav-item {
-    font-size: 13px;
-  }
-  .nav-item:first-child span:not(.nav-count):after,
-  .nav-item:nth-child(3) span:not(.nav-count):after,
-  .nav-item:nth-child(5) span:not(.nav-count):after {
     font-size: 13px;
   }
 }

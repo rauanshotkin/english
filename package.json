@@ -11,6 +11,7 @@
     "start": "tsx server/index.ts",
     "test": "tsx --test server/*.test.ts",
     "test:e2e": "node tests/e2e.mjs",
+    "test:e2e:native": "node tests/native-e2e.mjs",
     "format": "prettier --write src server tests vite.config.ts index.html package.json tsconfig.json README.md",
     "format:check": "prettier --check src server tests vite.config.ts index.html package.json tsconfig.json README.md",
     "build:pages": "tsc -b && vite build --mode pages"

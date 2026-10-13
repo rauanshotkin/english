@@ -1,4 +1,11 @@
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import {
+  lazy,
+  Suspense,
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+} from "react";
 import { AnimatePresence, motion } from "motion/react";
 import {
   ArrowLeft,
@@ -18,6 +25,8 @@ import {
   Library,
   LoaderCircle,
   Moon,
+  MessageCircle,
+  MoreHorizontal,
   Play,
   Plus,
   Search,
@@ -40,11 +49,21 @@ import BookArt from "./components/BookArt";
 import Consent from "./components/Consent";
 import { useReaderStorage } from "./lib/storage";
 import { requestTranslation } from "./lib/translationClient";
+import MobileMoreMenu from "./components/MobileMoreMenu";
+import type { NativePhrase, NativeSituation } from "./data/nativePhrases";
+
+const NativeSpeaking = lazy(() => import("./components/NativeSpeaking"));
 
 declare const __STATIC_HOSTING__: boolean;
 
 type View =
-  "reading" | "reader" | "dictionary" | "practice" | "listening" | "overview";
+  | "reading"
+  | "reader"
+  | "dictionary"
+  | "practice"
+  | "listening"
+  | "overview"
+  | "native";
 type Translation = {
   text: string;
   translation: string;
@@ -55,11 +74,32 @@ type Translation = {
 };
 type Selection = { text: string; context: string; x: number; y: number };
 const navigation = [
-  { id: "overview", label: "Моё пространство", icon: LayoutDashboard },
-  { id: "reading", label: "Чтение", icon: BookOpen },
-  { id: "dictionary", label: "Мой словарь", icon: Bookmark },
-  { id: "practice", label: "Практика", icon: Zap },
-  { id: "listening", label: "Аудирование", icon: Headphones },
+  {
+    id: "overview",
+    label: "Моё пространство",
+    mobileLabel: "Прогресс",
+    icon: LayoutDashboard,
+  },
+  { id: "reading", label: "Чтение", mobileLabel: "Чтение", icon: BookOpen },
+  {
+    id: "native",
+    label: "Говорить как носитель",
+    mobileLabel: "Говорить",
+    icon: MessageCircle,
+  },
+  {
+    id: "dictionary",
+    label: "Мой словарь",
+    mobileLabel: "Словарь",
+    icon: Bookmark,
+  },
+  { id: "practice", label: "Практика", mobileLabel: "Практика", icon: Zap },
+  {
+    id: "listening",
+    label: "Аудирование",
+    mobileLabel: "Слушать",
+    icon: Headphones,
+  },
 ] as const;
 const targetNames = { kk: "Қазақша", ru: "Русский" };
 const normalizeSentence = (text: string) =>
@@ -100,6 +140,7 @@ export default function App() {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("all");
   const [policyOpen, setPolicyOpen] = useState(false);
+  const [moreMenuOpen, setMoreMenuOpen] = useState(false);
   const [translation, setTranslation] = useState<Translation | null>(null);
   const [selection, setSelection] = useState<Selection | null>(null);
   const readerTheme = state.settings.theme;
@@ -123,6 +164,7 @@ export default function App() {
   const wordFocusRef = useRef<HTMLButtonElement | null>(null);
   const requestFocusRef = useRef(false);
   const requestRef = useRef<AbortController | null>(null);
+  const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
   const previousAnalytics = useRef<boolean | undefined>(undefined);
   const analyticsChoice = useRef(false);
   analyticsChoice.current = !!consent?.analytics;
@@ -192,6 +234,7 @@ export default function App() {
     requestRef.current?.abort();
     setTranslation(null);
     setSelection(null);
+    utteranceRef.current = null;
     window.speechSynthesis?.cancel();
     setSpeaking(false);
   }, [chapter.id, view, customBook]);
@@ -221,6 +264,7 @@ export default function App() {
   useEffect(
     () => () => {
       requestRef.current?.abort();
+      utteranceRef.current = null;
       window.speechSynthesis?.cancel();
     },
     [],
@@ -236,33 +280,46 @@ export default function App() {
     setShowContents(false);
   }
   function navigate(next: View) {
+    setMoreMenuOpen(false);
     if (next === "listening") setCustomBook(false);
     setView(next);
     setSearch("");
     setSelection(null);
     window.scrollTo({ top: 0, behavior: "instant" });
   }
-  function speak(text: string) {
+  function speak(text: string, restart = false) {
     if (!("speechSynthesis" in window)) {
       notify(
         "Этот браузер не поддерживает озвучивание. Попробуйте Chrome или Safari.",
       );
       return;
     }
-    if (speaking) {
+    if (speaking && !restart) {
+      utteranceRef.current = null;
       window.speechSynthesis.cancel();
       setSpeaking(false);
       return;
     }
+    if (restart) {
+      utteranceRef.current = null;
+      window.speechSynthesis.cancel();
+    }
     const utterance = new SpeechSynthesisUtterance(text);
+    utteranceRef.current = utterance;
     utterance.lang = "en-US";
     utterance.rate = state.settings.speechRate;
     const voice = window.speechSynthesis
       .getVoices()
       .find((v) => v.lang.startsWith("en"));
     if (voice) utterance.voice = voice;
-    utterance.onend = () => setSpeaking(false);
+    utterance.onend = () => {
+      if (utteranceRef.current !== utterance) return;
+      utteranceRef.current = null;
+      setSpeaking(false);
+    };
     utterance.onerror = (e) => {
+      if (utteranceRef.current !== utterance) return;
+      utteranceRef.current = null;
       setSpeaking(false);
       if (e.error !== "interrupted" && e.error !== "canceled")
         notify("Голос недоступен. Проверьте настройки озвучивания браузера.");
@@ -374,6 +431,35 @@ export default function App() {
       consent?.preferences
         ? "Добавлено в ваш словарь"
         : "Добавлено на эту сессию. Включите сохранение в настройках cookies.",
+    );
+  }
+  function toggleNativePhrase(
+    phrase: NativePhrase,
+    situation: NativeSituation,
+  ) {
+    const target = state.settings.targetLanguage;
+    const existing = state.words.find(
+      (word) =>
+        word.text.toLowerCase() === phrase.english.toLowerCase() &&
+        (word.targetLanguage ?? "kk") === target,
+    );
+    if (existing) {
+      removeWord(existing.id);
+      notify("Фраза удалена из словаря");
+      return;
+    }
+    saveWord({
+      id: `${target}:${phrase.english.toLowerCase()}`,
+      text: phrase.english,
+      translation: phrase[target],
+      context: phrase.example,
+      chapterId: `native-${situation.id}`,
+      targetLanguage: target,
+    });
+    notify(
+      consent?.preferences
+        ? "Фраза добавлена в твой словарь"
+        : "Фраза добавлена на эту сессию. Сохранение можно включить в cookies.",
     );
   }
   async function importBook(file?: File) {
@@ -489,20 +575,33 @@ export default function App() {
         <div className="sidebar-tagline">Маленькие шаги. Большой мир.</div>
         <div className="nav-caption">ТВОЁ ПРОСТРАНСТВО</div>
         <nav className="main-nav" aria-label="Основные разделы">
-          {navigation.map(({ id, label, icon: Icon }) => (
+          {navigation.map(({ id, label, mobileLabel, icon: Icon }) => (
             <button
               key={id}
+              data-view={id}
+              aria-label={label}
               className={`nav-item ${view === id || (id === "reading" && view === "reader") ? "active" : ""}`}
               onClick={() => navigate(id)}
             >
               <Icon size={20} />
-              <span>{label}</span>
+              <span className="nav-label-full">{label}</span>
+              <span className="nav-label-mobile">{mobileLabel}</span>
               {id === "reading" && <span className="nav-count">01</span>}
               {id === "dictionary" && state.words.length > 0 && (
                 <span className="nav-count">{state.words.length}</span>
               )}
             </button>
           ))}
+          <button
+            className={`nav-item mobile-more-button ${view === "overview" || view === "listening" ? "active" : ""}`}
+            aria-label="Другие разделы"
+            aria-haspopup="dialog"
+            aria-expanded={moreMenuOpen}
+            onClick={() => setMoreMenuOpen(true)}
+          >
+            <MoreHorizontal size={24} />
+            <span className="nav-label-mobile">Ещё</span>
+          </button>
         </nav>
         <div className="sidebar-note">
           <span className="note-icon">
@@ -1331,6 +1430,34 @@ export default function App() {
               </motion.div>
             )}
 
+            {view === "native" && (
+              <motion.div
+                key="native"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+              >
+                <Suspense
+                  fallback={
+                    <div className="category-loading" role="status">
+                      <LoaderCircle className="spin" size={24} />
+                      <span>Открываем жизненные ситуации…</span>
+                    </div>
+                  }
+                >
+                  <NativeSpeaking
+                    targetLanguage={state.settings.targetLanguage}
+                    onLanguageChange={(target) =>
+                      updateSettings({ targetLanguage: target })
+                    }
+                    onSpeak={(text) => speak(text, true)}
+                    onSavePhrase={toggleNativePhrase}
+                    savedWords={state.words}
+                    onPractice={() => navigate("practice")}
+                  />
+                </Suspense>
+              </motion.div>
+            )}
+
             {view === "dictionary" && (
               <motion.div
                 key="dictionary"
@@ -1719,6 +1846,12 @@ export default function App() {
         className="visually-hidden"
         aria-label="Загрузить текст книги"
         onChange={(e) => importBook(e.target.files?.[0])}
+      />
+      <MobileMoreMenu
+        open={moreMenuOpen}
+        activeView={view}
+        onNavigate={navigate}
+        onClose={() => setMoreMenuOpen(false)}
       />
       <Consent
         analyticsAvailable={!__STATIC_HOSTING__}

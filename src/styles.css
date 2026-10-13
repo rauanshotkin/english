@@ -2758,13 +2758,6 @@ main {
     width: 19px;
     height: 19px;
   }
-  .nav-item:first-child span:not(.nav-count) {
-    font-size: 0;
-  }
-  .nav-item:first-child span:not(.nav-count):after {
-    content: "Мой прогресс";
-    font-size: 13px;
-  }
   .nav-count {
     display: none;
   }
@@ -3960,9 +3953,6 @@ main {
   .nav-item {
     font-size: 14px;
   }
-  .nav-item:first-child span:not(.nav-count):after {
-    font-size: 14px;
-  }
   .theme-dark .context-translated {
     color: #d5c2e3;
   }
@@ -4007,9 +3997,6 @@ main {
     font-size: 13px;
   }
   .nav-item {
-    font-size: 13px;
-  }
-  .nav-item:first-child span:not(.nav-count):after {
     font-size: 13px;
   }
 }
