@@ -945,10 +945,11 @@ export default function App() {
                       <button
                         onClick={() =>
                           updateSettings({
-                            fontSize: Math.max(16, state.settings.fontSize - 2),
+                            fontSize: Math.max(18, state.settings.fontSize - 2),
                           })
                         }
                         aria-label="Уменьшить шрифт"
+                        disabled={state.settings.fontSize <= 18}
                       >
                         A−
                       </button>
@@ -956,10 +957,11 @@ export default function App() {
                       <button
                         onClick={() =>
                           updateSettings({
-                            fontSize: Math.min(28, state.settings.fontSize + 2),
+                            fontSize: Math.min(34, state.settings.fontSize + 2),
                           })
                         }
                         aria-label="Увеличить шрифт"
+                        disabled={state.settings.fontSize >= 34}
                       >
                         A+
                       </button>
@@ -1741,9 +1743,9 @@ export default function App() {
           <motion.div
             role="status"
             className="toast"
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 15, x: "-50%" }}
+            animate={{ opacity: 1, y: 0, x: "-50%" }}
+            exit={{ opacity: 0, y: 10, x: "-50%" }}
           >
             <Check size={17} />
             {toast}

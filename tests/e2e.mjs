@@ -202,10 +202,12 @@ try {
           .locator(".reader-aside")
           .evaluate((element) => ({
             bottom: element.getBoundingClientRect().bottom,
-            viewport: innerHeight,
+            navigationTop: document
+              .querySelector(".sidebar")
+              .getBoundingClientRect().top,
           }));
         assert.ok(
-          Math.abs(geometry.viewport - geometry.bottom - 67) < 2,
+          Math.abs(geometry.navigationTop - geometry.bottom) < 2,
           JSON.stringify(geometry),
         );
       },

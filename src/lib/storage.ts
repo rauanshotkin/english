@@ -38,7 +38,7 @@ const WORDS_COOKIE = "lumi_words";
 const COOKIE_AGE = 180 * 24 * 60 * 60;
 const MAX_COOKIE_VALUE_LENGTH = 3500;
 const DEFAULT_SETTINGS: ReaderSettings = {
-  fontSize: 20,
+  fontSize: 22,
   speechRate: 0.85,
   targetLanguage: "kk",
   theme: "light",
@@ -112,7 +112,8 @@ function cleanSettings(
   value: Partial<ReaderSettings> | undefined,
 ): ReaderSettings {
   return {
-    fontSize: boundedNumber(value?.fontSize, DEFAULT_SETTINGS.fontSize, 16, 30),
+    // Retain smaller sizes previously chosen by returning readers.
+    fontSize: boundedNumber(value?.fontSize, DEFAULT_SETTINGS.fontSize, 16, 34),
     speechRate: boundedNumber(
       value?.speechRate,
       DEFAULT_SETTINGS.speechRate,

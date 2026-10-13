@@ -138,7 +138,7 @@ svg {
   width: max-content;
   padding: 0 11px;
   font-family: "DM Sans", sans-serif;
-  font-size: 39px;
+  font-size: 44px;
   font-weight: 700;
   letter-spacing: -2px;
 }
@@ -154,13 +154,13 @@ svg {
   color: var(--purple);
 }
 .sidebar-tagline {
-  font-size: 10px;
+  font-size: 14px;
   color: #6c6b74;
   margin: 10px 0 0 13px;
   white-space: nowrap;
 }
 .nav-caption {
-  font-size: 9px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 1.5px;
   color: #6c6c75;
@@ -177,7 +177,7 @@ svg {
   gap: 13px;
   min-height: 47px;
   padding: 0 15px;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 600;
   border-radius: 9px;
   color: #6a6a77;
@@ -194,7 +194,7 @@ svg {
 .nav-count {
   margin-left: auto;
   font-family: "DM Sans", sans-serif;
-  font-size: 10px;
+  font-size: 14px;
   color: #73659c;
 }
 .sidebar-note {
@@ -214,12 +214,12 @@ svg {
   margin-bottom: 13px;
 }
 .sidebar-note h3 {
-  font-size: 13px;
+  font-size: 18px;
   letter-spacing: -0.2px;
   margin-bottom: 9px;
 }
 .sidebar-note p {
-  font-size: 11px;
+  font-size: 16px;
   line-height: 1.9;
   color: #6c6e60;
 }
@@ -230,7 +230,7 @@ svg {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 9px;
+  font-size: 14px;
   color: #6b705f;
 }
 .sidebar-bottom {
@@ -239,7 +239,7 @@ svg {
   align-items: center;
   gap: 7px;
   color: #6b6b75;
-  font-size: 9px;
+  font-size: 14px;
   padding: 0 7px;
 }
 .language-dot {
@@ -269,7 +269,7 @@ svg {
   align-items: center;
   gap: 12px;
   color: #6c6b75;
-  font-size: 11px;
+  font-size: 16px;
 }
 .breadcrumbs strong {
   font-weight: 500;
@@ -284,7 +284,7 @@ svg {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 10px;
+  font-size: 14px;
   color: #6e6d75;
 }
 .no-rush > span {
@@ -306,7 +306,7 @@ svg {
   font-style: italic;
   display: grid;
   place-items: center;
-  font-size: 17px;
+  font-size: 20px;
 }
 .avatar > span {
   position: absolute;
@@ -338,7 +338,7 @@ main {
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: 9px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 1.8px;
   color: #6f6c79;
@@ -353,14 +353,14 @@ main {
 }
 .page-heading h1,
 .standard-page h1 {
-  font-size: 34px;
+  font-size: 38px;
   letter-spacing: -1.3px;
   line-height: 1.3;
   font-weight: 600;
   position: relative;
 }
 .page-heading h1 .serif {
-  font-size: 39px;
+  font-size: 44px;
   letter-spacing: -1.3px;
   color: #726a80;
 }
@@ -371,7 +371,7 @@ main {
   vertical-align: top;
 }
 .page-heading p {
-  font-size: 11px;
+  font-size: 16px;
   color: #6e6c78;
   margin-top: 10px;
   line-height: 1.7;
@@ -382,7 +382,7 @@ main {
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: 9px;
+  font-size: 14px;
   color: #706c7a;
   padding: 9px 11px;
   margin-bottom: 3px;
@@ -407,7 +407,7 @@ main {
   z-index: 2;
 }
 .feature-tag {
-  font-size: 8px;
+  font-size: 13px;
   letter-spacing: 1.3px;
   font-weight: 700;
   color: #756783;
@@ -418,7 +418,7 @@ main {
 }
 .featured-content h2 {
   font-family: var(--serif);
-  font-size: 58px;
+  font-size: 68px;
   line-height: 0.97;
   font-weight: 400;
   color: #4c425c;
@@ -431,7 +431,7 @@ main {
   font-weight: 400;
 }
 .title-star {
-  font-size: 35px;
+  font-size: 38px;
   color: #7e6679;
   position: absolute;
   right: -65px;
@@ -439,13 +439,13 @@ main {
   transform: rotate(12deg);
 }
 .feature-author {
-  font-size: 10px;
+  font-size: 14px;
   letter-spacing: 0.3px;
   color: #78687e;
   margin-bottom: 19px;
 }
 .feature-description {
-  font-size: 11px;
+  font-size: 16px;
   line-height: 1.9;
   color: #736a7b;
 }
@@ -453,7 +453,7 @@ main {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 9px;
+  font-size: 14px;
   color: #726a78;
   margin: 16px 0 21px;
   white-space: nowrap;
@@ -484,7 +484,7 @@ main {
   color: #fff;
   border-radius: 7px;
   padding: 13px 19px;
-  font-size: 11px;
+  font-size: 16px;
   font-weight: 600;
   box-shadow: 0 4px 12px #8271d617;
   min-height: 42px;
@@ -494,7 +494,7 @@ main {
   transform: translateY(-1px);
 }
 .feature-footnote {
-  font-size: 8px;
+  font-size: 13px;
   color: #726b78;
   margin-top: 14px;
   display: flex;
@@ -536,7 +536,7 @@ main {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 8px;
+  font-size: 13px;
   color: #726a7e;
   z-index: 2;
   backdrop-filter: blur(8px);
@@ -561,12 +561,12 @@ main {
 .floating-word strong {
   display: block;
   font-family: var(--serif);
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 400;
   line-height: 1.1;
 }
 .floating-word div > span {
-  font-size: 9px;
+  font-size: 14px;
   color: #6f6975;
 }
 .floating-volume {
@@ -578,7 +578,7 @@ main {
 .floating-plus {
   margin-left: auto;
   color: #72687e;
-  font-size: 22px;
+  font-size: 26px;
 }
 .benefit-strip {
   display: grid;
@@ -623,12 +623,12 @@ main {
 }
 .benefit-strip strong {
   display: block;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 600;
   color: #6e6a78;
 }
 .benefit-strip small {
-  font-size: 9px;
+  font-size: 14px;
   display: block;
   color: #706c76;
   margin-top: 5px;
@@ -640,12 +640,12 @@ main {
   gap: 16px;
 }
 .section-heading h2 {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 600;
   letter-spacing: -0.3px;
 }
 .section-heading h2 > span {
-  font-size: 10px;
+  font-size: 14px;
   color: #716983;
   background: #eae7f2;
   border-radius: 5px;
@@ -657,7 +657,7 @@ main {
   display: flex;
   align-items: center;
   gap: 9px;
-  font-size: 10px;
+  font-size: 14px;
   color: #6d6c75;
 }
 .search-box input {
@@ -681,7 +681,7 @@ main {
 }
 .shelf-tabs button {
   padding: 0 0 12px;
-  font-size: 10px;
+  font-size: 14px;
   color: #6c6a74;
   position: relative;
 }
@@ -704,7 +704,7 @@ main {
   padding: 1px 5px;
   border-radius: 4px;
   margin-left: 7px;
-  font-size: 9px;
+  font-size: 14px;
 }
 .shelf-grid {
   display: grid;
@@ -747,13 +747,13 @@ main {
   color: #4d465e;
 }
 .cover-type > span:first-child {
-  font-size: 6px;
+  font-size: 13px;
   letter-spacing: 1.8px;
 }
 .cover-type strong {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: 36px;
+  font-size: 44px;
   letter-spacing: -1px;
   line-height: 1;
   margin-top: 11px;
@@ -761,7 +761,7 @@ main {
 }
 .cover-bottom {
   margin-top: auto;
-  font-size: 6px;
+  font-size: 13px;
   letter-spacing: 1.6px;
   color: #7b685b;
 }
@@ -772,7 +772,7 @@ main {
   background: #ffffffc4;
   border-radius: 4px;
   padding: 3px 6px;
-  font-size: 8px;
+  font-size: 13px;
   color: #766884;
 }
 .shelf-info {
@@ -785,19 +785,19 @@ main {
   gap: 6px;
 }
 .shelf-info-title h3 {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 600;
 }
 .small-arrow {
   color: #736984;
 }
 .shelf-info > p {
-  font-size: 9px;
+  font-size: 14px;
   color: #6f6b75;
   margin-top: 6px;
 }
 .progress-row {
-  font-size: 8px;
+  font-size: 13px;
   color: #706a79;
   display: flex;
   justify-content: space-between;
@@ -873,15 +873,15 @@ main {
   position: absolute;
   right: 10px;
   top: 10px;
-  font-size: 28px;
+  font-size: 32px;
   color: #756787;
 }
 .import-card h3 {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 600;
 }
 .import-card p {
-  font-size: 10px;
+  font-size: 14px;
   color: #6f6a76;
   line-height: 1.9;
   margin-top: 9px;
@@ -896,12 +896,12 @@ main {
   border-radius: 6px;
   padding: 9px 12px;
   margin-top: 20px;
-  font-size: 9px;
+  font-size: 14px;
   font-weight: 600;
 }
 .import-card small {
   color: #726b78;
-  font-size: 7px;
+  font-size: 13px;
   margin-top: 10px;
 }
 .discovery-card {
@@ -920,7 +920,7 @@ main {
   color: #686e5e;
 }
 .new-label {
-  font-size: 7px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 1.2px;
 }
@@ -939,18 +939,18 @@ main {
   opacity: 0.8;
 }
 .discovery-card h3 {
-  font-size: 22px;
+  font-size: 26px;
   line-height: 1.35;
   font-weight: 500;
   letter-spacing: -0.5px;
   color: #66705b;
 }
 .discovery-card h3 .serif {
-  font-size: 26px;
+  font-size: 32px;
   color: #68705a;
 }
 .discovery-card p {
-  font-size: 10px;
+  font-size: 14px;
   line-height: 1.9;
   color: #686f5e;
   margin: 10px 0 17px;
@@ -959,7 +959,7 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 600;
   color: #776399;
   padding: 0;
@@ -970,7 +970,7 @@ main {
 .discovery-card .text-button {
   margin-top: auto;
   color: #646f56;
-  font-size: 9px;
+  font-size: 14px;
   justify-content: space-between;
 }
 .library-quote {
@@ -983,14 +983,14 @@ main {
 }
 .library-quote > span {
   font-family: var(--serif);
-  font-size: 39px;
+  font-size: 44px;
   color: #73697c;
   height: 30px;
 }
 .library-quote > p {
   font-family: var(--serif);
   font-style: italic;
-  font-size: 13px;
+  font-size: 18px;
 }
 .library-quote svg {
   margin-left: 7px;
@@ -1009,7 +1009,7 @@ main {
 .footer-brand {
   font-family: "DM Sans", sans-serif;
   color: #706b75;
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 600;
   letter-spacing: -0.5px;
   display: flex;
@@ -1019,7 +1019,7 @@ main {
 .footer-brand > span {
   font-family: "Manrope", sans-serif;
   font-weight: 400;
-  font-size: 8px;
+  font-size: 13px;
   letter-spacing: 0;
   color: #6f6b74;
 }
@@ -1030,7 +1030,7 @@ main {
 }
 .footer button,
 .visitor-count {
-  font-size: 8px;
+  font-size: 13px;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -1054,11 +1054,11 @@ main {
   padding: 20px;
 }
 .empty-shelf h3 {
-  font-size: 15px;
+  font-size: 20px;
   color: #736983;
 }
 .empty-shelf p {
-  font-size: 10px;
+  font-size: 14px;
   line-height: 1.7;
   color: #706a79;
 }
@@ -1075,14 +1075,14 @@ main {
   gap: 14px;
   justify-content: space-between;
   margin-bottom: 23px;
-  font-size: 10px;
+  font-size: 14px;
 }
 .back-button {
   display: flex;
   align-items: center;
   gap: 7px;
   color: #6f6c78;
-  font-size: 10px;
+  font-size: 14px;
   padding: 5px 0;
 }
 .back-button:hover {
@@ -1090,11 +1090,11 @@ main {
 }
 .reader-book-name {
   font-family: var(--serif);
-  font-size: 16px;
+  font-size: 20px;
   color: #706781;
 }
 .reader-progress-label {
-  font-size: 9px;
+  font-size: 14px;
   color: #71697b;
 }
 .reader-toolbar {
@@ -1113,7 +1113,7 @@ main {
   display: flex;
   align-items: center;
   gap: 9px;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 600;
   color: #74648f;
   padding: 6px 0;
@@ -1133,13 +1133,13 @@ main {
   font-family: var(--serif);
 }
 .font-controls > button {
-  font-size: 14px;
+  font-size: 18px;
   padding: 5px;
   color: #726a7e;
 }
 .font-controls > span {
   font-family: inherit;
-  font-size: 10px;
+  font-size: 14px;
   color: #6f6975;
 }
 .theme-controls {
@@ -1161,7 +1161,7 @@ main {
   border: 0;
   background: transparent;
   color: #756684;
-  font-size: 10px;
+  font-size: 14px;
   max-width: 94px;
 }
 .icon-button {
@@ -1190,7 +1190,7 @@ main {
   box-shadow: 0 3px 9px #4b345603;
 }
 .chapter-kicker {
-  font-size: 8px;
+  font-size: 13px;
   letter-spacing: 2px;
   color: #726880;
   display: flex;
@@ -1199,10 +1199,10 @@ main {
   gap: 14px;
 }
 .chapter-kicker > span {
-  font-size: 17px;
+  font-size: 20px;
 }
 .reading-paper h1 {
-  font-size: 33px;
+  font-size: 38px;
   line-height: 1.2;
   letter-spacing: -0.5px;
   color: #64546e;
@@ -1210,7 +1210,7 @@ main {
   margin-top: 17px;
 }
 .chapter-subtitle {
-  font-size: 10px;
+  font-size: 14px;
   color: #726a78;
   text-align: center;
   margin-top: 10px;
@@ -1220,7 +1220,7 @@ main {
   justify-content: center;
   align-items: center;
   gap: 6px;
-  font-size: 8px;
+  font-size: 13px;
   color: #70697a;
   border-top: 1px solid #f0ecf4;
   margin-top: 25px;
@@ -1276,7 +1276,7 @@ main {
 }
 .chapter-end > span {
   color: #766982;
-  font-size: 20px;
+  font-size: 22px;
 }
 .complete-button {
   display: flex;
@@ -1287,7 +1287,7 @@ main {
   border-radius: 7px;
   padding: 11px 15px;
   color: #7b6394;
-  font-size: 10px;
+  font-size: 14px;
 }
 .complete-button.completed {
   color: #637355;
@@ -1298,7 +1298,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 9px;
+  font-size: 14px;
   color: #726980;
   border-top: 1px solid #eee7f5;
   margin-top: 28px;
@@ -1311,11 +1311,11 @@ main {
   padding: 5px 0;
 }
 .chapter-pagination > span {
-  font-size: 8px;
+  font-size: 13px;
   color: #706978;
 }
 .content-note {
-  font-size: 8px;
+  font-size: 13px;
   line-height: 1.8;
   text-align: center;
   color: #726b78;
@@ -1334,7 +1334,7 @@ main {
   margin: 7px 0 16px;
 }
 .reader-aside-heading > h2 {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 500;
 }
 .translation-empty {
@@ -1356,13 +1356,13 @@ main {
 }
 .translation-empty h3 {
   font-family: var(--serif);
-  font-size: 22px;
+  font-size: 26px;
   line-height: 1.35;
   font-weight: 400;
   color: #796588;
 }
 .translation-empty p {
-  font-size: 10px;
+  font-size: 14px;
   line-height: 1.9;
   color: #72697a;
   margin-top: 12px;
@@ -1372,7 +1372,7 @@ main {
   border: 1px dashed #dcd1e9;
   border-radius: 6px;
   font-family: var(--serif);
-  font-size: 19px;
+  font-size: 22px;
   color: #766586;
   margin-top: 22px;
   padding: 12px;
@@ -1380,7 +1380,7 @@ main {
 .sample-word > span {
   display: block;
   font-family: "Manrope", sans-serif;
-  font-size: 8px;
+  font-size: 13px;
   margin-top: 4px;
   color: #736a7d;
 }
@@ -1398,12 +1398,12 @@ main {
   margin-bottom: 11px;
 }
 .vocabulary-heading h3 {
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 500;
   color: #736681;
 }
 .vocabulary-heading > span {
-  font-size: 8px;
+  font-size: 13px;
   color: #736980;
 }
 .chapter-vocabulary > button {
@@ -1413,7 +1413,7 @@ main {
   width: 100%;
   padding: 10px 2px;
   font-family: var(--serif);
-  font-size: 15px;
+  font-size: 20px;
   color: #786687;
   border-bottom: 1px solid #f2edf7;
 }
@@ -1428,7 +1428,7 @@ main {
   display: flex;
   align-items: flex-start;
   gap: 7px;
-  font-size: 8px;
+  font-size: 13px;
   color: #6f6977;
   line-height: 1.7;
   margin-top: 18px;
@@ -1451,7 +1451,7 @@ main {
   align-items: center;
   gap: 7px;
   margin-bottom: 15px;
-  font-size: 7px;
+  font-size: 13px;
   letter-spacing: 1px;
   color: #73677f;
 }
@@ -1461,7 +1461,7 @@ main {
 }
 .translation-card h3 {
   font-family: var(--serif);
-  font-size: 26px;
+  font-size: 32px;
   font-weight: 400;
   color: #7c6393;
   line-height: 1.4;
@@ -1473,12 +1473,12 @@ main {
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: 8px;
+  font-size: 13px;
   color: #73697e;
   margin-top: 6px;
 }
 .translated-text {
-  font-size: 16px;
+  font-size: 20px;
   color: #7b668a;
   line-height: 1.6;
   margin: 22px 0;
@@ -1493,7 +1493,7 @@ main {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 9px;
+  font-size: 14px;
   background: #eee7f8;
   color: #7e6296;
   padding: 10px 12px;
@@ -1505,7 +1505,7 @@ main {
   padding-top: 16px;
 }
 .context-box > span {
-  font-size: 7px;
+  font-size: 13px;
   letter-spacing: 1.1px;
   color: #73697c;
 }
@@ -1513,12 +1513,12 @@ main {
   font-family: var(--serif);
   font-style: italic;
   line-height: 1.7;
-  font-size: 13px;
+  font-size: 18px;
   color: #7b6684;
   margin-top: 9px;
 }
 .translation-source {
-  font-size: 7px;
+  font-size: 13px;
   line-height: 1.8;
   display: block;
   color: #73697c;
@@ -1528,13 +1528,13 @@ main {
   display: flex;
   align-items: center;
   gap: 9px;
-  font-size: 10px;
+  font-size: 14px;
   color: #766487;
   margin: 26px 0;
 }
 .translation-error {
   margin-top: 22px;
-  font-size: 11px;
+  font-size: 16px;
   line-height: 1.8;
   color: #826571;
 }
@@ -1557,7 +1557,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 12px;
+  font-size: 16px;
   color: #7b648f;
   margin-bottom: 10px;
   padding: 5px;
@@ -1570,7 +1570,7 @@ main {
   padding: 12px 9px;
   border-radius: 5px;
   text-align: left;
-  font-size: 10px;
+  font-size: 14px;
   color: #75697f;
 }
 .chapter-dropdown > button > span:first-child {
@@ -1597,7 +1597,7 @@ main {
   box-shadow: 0 4px 12px #5538772e;
   border-radius: 7px;
   padding: 11px 14px;
-  font-size: 10px;
+  font-size: 14px;
 }
 .theme-sepia {
   background: #f4efe4;
@@ -1654,16 +1654,16 @@ main {
   padding-bottom: 55px;
 }
 .standard-page h1 {
-  font-size: 38px;
+  font-size: 44px;
   margin-top: 18px;
   line-height: 1.4;
 }
 .standard-page h1 .serif {
   color: #78678a;
-  font-size: 42px;
+  font-size: 52px;
 }
 .page-description {
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.8;
   color: #6e6975;
   margin-top: 14px;
@@ -1677,11 +1677,11 @@ main {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  font-size: 11px;
+  font-size: 16px;
   color: #786884;
 }
 .dictionary-toolbar small {
-  font-size: 9px;
+  font-size: 14px;
   color: #746a7c;
 }
 .secondary-button {
@@ -1693,7 +1693,7 @@ main {
   border-radius: 6px;
   padding: 12px 16px;
   background: #fff;
-  font-size: 10px;
+  font-size: 14px;
   color: #796389;
 }
 .secondary-button:hover {
@@ -1719,12 +1719,12 @@ main {
 }
 .large-empty > h2 {
   font-family: var(--serif);
-  font-size: 26px;
+  font-size: 32px;
   font-weight: 400;
   color: #786487;
 }
 .large-empty > p {
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.9;
   color: #73697b;
   margin: 14px 0 24px;
@@ -1747,20 +1747,20 @@ main {
   gap: 5px;
 }
 .word-language {
-  font-size: 7px;
+  font-size: 13px;
   letter-spacing: 1.5px;
   color: #766981;
 }
 .word-card h2 {
   font-family: var(--serif);
-  font-size: 27px;
+  font-size: 32px;
   color: #7b6290;
   font-weight: 400;
   overflow-wrap: anywhere;
   margin-top: 12px;
 }
 .word-card > p {
-  font-size: 12px;
+  font-size: 16px;
   color: #786884;
   margin-top: 8px;
 }
@@ -1771,13 +1771,13 @@ main {
   font-family: var(--serif);
   font-style: italic;
   line-height: 1.8;
-  font-size: 13px;
+  font-size: 18px;
   color: #75677f;
   max-height: 130px;
   overflow: auto;
 }
 .word-card > .text-button {
-  font-size: 9px;
+  font-size: 14px;
   margin-top: 22px;
 }
 .practice-area {
@@ -1787,7 +1787,7 @@ main {
 .practice-top {
   display: flex;
   justify-content: space-between;
-  font-size: 9px;
+  font-size: 14px;
   color: #766884;
   margin-bottom: 13px;
 }
@@ -1813,12 +1813,12 @@ main {
   transform: translateY(-2px);
 }
 .flashcard > span:first-child {
-  font-size: 9px;
+  font-size: 14px;
   letter-spacing: 2px;
   color: #786686;
 }
 .flashcard h2 {
-  font-size: 40px;
+  font-size: 44px;
   color: #7f6096;
   margin: 30px 0 13px;
   max-width: 100%;
@@ -1826,14 +1826,14 @@ main {
   line-height: 1.3;
 }
 .flashcard > p {
-  font-size: 11px;
+  font-size: 16px;
   color: #7a6686;
 }
 .flashcard .flip-hint {
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: 8px;
+  font-size: 13px;
   letter-spacing: 0;
   color: #786882;
   margin-top: 32px;
@@ -1887,13 +1887,13 @@ main {
   padding: 35px;
 }
 .listening-body h2 {
-  font-size: 32px;
+  font-size: 38px;
   color: #7e638d;
   line-height: 1.2;
   margin-top: 20px;
 }
 .listening-body > p {
-  font-size: 11px;
+  font-size: 16px;
   color: #776682;
   margin-top: 9px;
 }
@@ -1901,7 +1901,7 @@ main {
   display: flex;
   align-items: center;
   gap: 13px;
-  font-size: 10px;
+  font-size: 14px;
   color: #776880;
   margin-top: 23px;
 }
@@ -1910,7 +1910,7 @@ main {
   background: #f6f1fa;
   border: 1px solid #e8def0;
   border-radius: 6px;
-  font-size: 10px;
+  font-size: 14px;
   color: #7b6589;
   max-width: 230px;
 }
@@ -1921,7 +1921,7 @@ main {
   margin: 24px 0;
 }
 .listening-actions > label {
-  font-size: 9px;
+  font-size: 14px;
   color: #786682;
   display: flex;
   align-items: center;
@@ -1945,12 +1945,12 @@ main {
 }
 .overview-stats strong {
   font-family: var(--serif);
-  font-size: 32px;
+  font-size: 38px;
   font-weight: 400;
   color: #7c628c;
 }
 .overview-stats span {
-  font-size: 11px;
+  font-size: 16px;
   color: #74667f;
 }
 .overview-continue {
@@ -1971,11 +1971,11 @@ main {
   padding: 38px 30px;
 }
 .overview-continue h2 {
-  font-size: 38px;
+  font-size: 44px;
   color: #7c628b;
 }
 .overview-continue p {
-  font-size: 12px;
+  font-size: 16px;
   color: #786883;
   margin: 15px 0 25px;
 }
@@ -1983,7 +1983,7 @@ main {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 10px;
+  font-size: 14px;
   color: #766883;
   margin-top: 25px;
 }
@@ -2012,7 +2012,7 @@ main {
   background: #fff;
   border: 1px solid #e4dbed;
   box-shadow: 0 6px 35px #7a549320;
-  font-size: 11px;
+  font-size: 16px;
   color: #7d628d;
 }
 .toast > svg {
@@ -2056,13 +2056,13 @@ main {
   min-width: 0;
 }
 .consent-banner-copy h2 {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 600;
   color: #7d648d;
   margin-bottom: 5px;
 }
 .consent-banner-copy p {
-  font-size: 9px;
+  font-size: 14px;
   line-height: 1.8;
   color: #766781;
   max-width: 530px;
@@ -2078,7 +2078,7 @@ main {
   border-radius: 6px;
   padding: 10px 12px;
   min-height: 38px;
-  font-size: 9px;
+  font-size: 14px;
   font-weight: 600;
   white-space: nowrap;
 }
@@ -2145,19 +2145,19 @@ main {
   margin-bottom: 20px;
 }
 .consent-eyebrow {
-  font-size: 8px;
+  font-size: 13px;
   letter-spacing: 1.7px;
   color: #776683;
   margin-bottom: 8px;
 }
 .consent-dialog h2 {
   font-family: var(--serif);
-  font-size: 30px;
+  font-size: 32px;
   font-weight: 400;
   color: #806293;
 }
 .consent-description {
-  font-size: 11px;
+  font-size: 16px;
   line-height: 1.8;
   color: #776683;
   margin: 13px 0 20px;
@@ -2180,19 +2180,19 @@ main {
   border: 0;
 }
 .consent-option h3 {
-  font-size: 11px;
+  font-size: 16px;
   font-weight: 600;
   color: #7c628d;
 }
 .consent-option p {
-  font-size: 10px;
+  font-size: 14px;
   color: #786684;
   line-height: 1.8;
   margin-top: 7px;
   max-width: 380px;
 }
 .consent-required {
-  font-size: 8px;
+  font-size: 13px;
   color: #766880;
   white-space: nowrap;
 }
@@ -2230,11 +2230,11 @@ main {
 .consent-policy summary {
   cursor: pointer;
   color: #7b668a;
-  font-size: 11px;
+  font-size: 16px;
   padding: 6px 0;
 }
 .consent-policy-copy {
-  font-size: 10px;
+  font-size: 14px;
   line-height: 1.9;
   color: #786884;
   margin: 15px 0;
@@ -2260,7 +2260,7 @@ main {
   margin-top: 20px;
 }
 .consent-footnote {
-  font-size: 9px;
+  font-size: 14px;
   color: #766981;
   line-height: 1.8;
   margin-top: 17px;
@@ -2276,52 +2276,52 @@ main {
     padding: 42px 46px;
   }
   .featured-content h2 {
-    font-size: 76px;
+    font-size: 82px;
   }
   .feature-description {
-    font-size: 13px;
+    font-size: 18px;
   }
   .book-meta {
-    font-size: 11px;
+    font-size: 16px;
   }
   .feature-tag {
-    font-size: 10px;
+    font-size: 14px;
   }
   .mini-cover {
     height: 290px;
   }
   .page-heading h1 {
-    font-size: 40px;
+    font-size: 44px;
   }
   .page-heading h1 .serif {
-    font-size: 46px;
+    font-size: 52px;
   }
   .library-page {
     padding-top: 50px;
   }
   .benefit-strip strong {
-    font-size: 12px;
+    font-size: 16px;
   }
   .benefit-strip small {
-    font-size: 11px;
+    font-size: 16px;
   }
   .shelf-info-title h3 {
-    font-size: 15px;
+    font-size: 20px;
   }
   .import-card h3 {
-    font-size: 15px;
+    font-size: 20px;
   }
   .discovery-card h3 {
-    font-size: 27px;
+    font-size: 32px;
   }
   .discovery-card h3 .serif {
-    font-size: 31px;
+    font-size: 38px;
   }
   .discovery-card p {
-    font-size: 12px;
+    font-size: 16px;
   }
   .import-card p {
-    font-size: 12px;
+    font-size: 16px;
   }
 }
 @media (max-width: 1200px) {
@@ -2342,10 +2342,10 @@ main {
     padding-right: 30px;
   }
   .page-heading h1 {
-    font-size: 29px;
+    font-size: 32px;
   }
   .page-heading h1 .serif {
-    font-size: 33px;
+    font-size: 38px;
   }
   .heading-badge {
     display: none;
@@ -2354,10 +2354,10 @@ main {
     padding: 30px;
   }
   .featured-content h2 {
-    font-size: 54px;
+    font-size: 68px;
   }
   .feature-tag {
-    font-size: 7px;
+    font-size: 13px;
   }
   .benefit-strip {
     gap: 15px;
@@ -2366,10 +2366,10 @@ main {
     gap: 9px;
   }
   .benefit-strip strong {
-    font-size: 9px;
+    font-size: 14px;
   }
   .benefit-strip small {
-    font-size: 8px;
+    font-size: 13px;
   }
   .benefit-strip > div + div:before {
     left: -9px;
@@ -2384,16 +2384,16 @@ main {
     padding: 15px 12px;
   }
   .shelf-info-title h3 {
-    font-size: 11px;
+    font-size: 16px;
   }
   .discovery-card {
     padding: 17px;
   }
   .import-card h3 {
-    font-size: 11px;
+    font-size: 16px;
   }
   .import-card p {
-    font-size: 9px;
+    font-size: 14px;
   }
   .footer {
     padding-left: 30px;
@@ -2413,10 +2413,10 @@ main {
     max-width: 245px;
   }
   .consent-banner-copy p {
-    font-size: 9px;
+    font-size: 14px;
   }
   .consent-button {
-    font-size: 8px;
+    font-size: 13px;
     padding: 9px;
   }
   .reader-page {
@@ -2430,7 +2430,7 @@ main {
     padding: 34px 30px 25px;
   }
   .reading-paper h1 {
-    font-size: 27px;
+    font-size: 32px;
   }
   .reader-toolbar {
     padding: 10px;
@@ -2457,22 +2457,22 @@ main {
     padding: 28px 12px 20px;
   }
   .brand {
-    font-size: 35px;
+    font-size: 38px;
     padding-left: 9px;
   }
   .brand-symbol {
     width: 26px;
   }
   .sidebar-tagline {
-    font-size: 8px;
+    font-size: 13px;
     margin-left: 9px;
   }
   .nav-caption {
-    font-size: 7px;
+    font-size: 13px;
     margin-left: 10px;
   }
   .nav-item {
-    font-size: 10px;
+    font-size: 14px;
     gap: 10px;
     padding-left: 10px;
     padding-right: 10px;
@@ -2484,16 +2484,16 @@ main {
     padding: 19px 15px 13px;
   }
   .sidebar-note h3 {
-    font-size: 12px;
+    font-size: 16px;
   }
   .sidebar-note p {
-    font-size: 10px;
+    font-size: 14px;
   }
   .note-line {
-    font-size: 8px;
+    font-size: 13px;
   }
   .sidebar-bottom {
-    font-size: 8px;
+    font-size: 13px;
     gap: 4px;
     padding: 0;
   }
@@ -2508,59 +2508,59 @@ main {
     gap: 15px;
   }
   .no-rush {
-    font-size: 8px;
+    font-size: 13px;
   }
   .library-page,
   .standard-page {
     padding: 31px 25px 0;
   }
   .page-heading h1 {
-    font-size: 26px;
+    font-size: 32px;
   }
   .page-heading h1 .serif {
-    font-size: 29px;
+    font-size: 32px;
   }
   .heading-spark {
     width: 22px;
     margin-left: 7px;
   }
   .page-heading p {
-    font-size: 10px;
+    font-size: 14px;
   }
   .featured-content {
     padding: 29px 25px;
   }
   .featured-content h2 {
-    font-size: 48px;
+    font-size: 52px;
   }
   .featured-book {
     min-height: 345px;
   }
   .feature-description {
-    font-size: 10px;
+    font-size: 14px;
   }
   .book-meta {
     gap: 7px;
-    font-size: 8px;
+    font-size: 13px;
   }
   .feature-tag {
-    font-size: 6px;
+    font-size: 13px;
     letter-spacing: 1px;
   }
   .feature-author {
-    font-size: 9px;
+    font-size: 14px;
   }
   .feature-footnote {
-    font-size: 7px;
+    font-size: 13px;
   }
   .title-star {
-    font-size: 28px;
+    font-size: 32px;
     right: -40px;
   }
   .orbit-label {
     right: 15px;
     top: 25px;
-    font-size: 7px;
+    font-size: 13px;
     gap: 4px;
     padding: 7px;
   }
@@ -2572,10 +2572,10 @@ main {
     gap: 8px;
   }
   .floating-word strong {
-    font-size: 16px;
+    font-size: 20px;
   }
   .floating-word div > span {
-    font-size: 8px;
+    font-size: 13px;
   }
   .floating-volume {
     padding: 7px;
@@ -2593,10 +2593,10 @@ main {
     width: 15px;
   }
   .benefit-strip strong {
-    font-size: 8px;
+    font-size: 13px;
   }
   .benefit-strip small {
-    font-size: 7px;
+    font-size: 13px;
   }
   .benefit-strip > div + div:before {
     display: none;
@@ -2611,23 +2611,23 @@ main {
     height: 235px;
   }
   .section-heading h2 {
-    font-size: 16px;
+    font-size: 20px;
   }
   .search-box input {
     width: 143px;
-    font-size: 9px;
+    font-size: 14px;
   }
   .shelf-info-title h3 {
-    font-size: 12px;
+    font-size: 16px;
   }
   .shelf-info {
     padding: 16px;
   }
   .import-card h3 {
-    font-size: 12px;
+    font-size: 16px;
   }
   .import-card p {
-    font-size: 10px;
+    font-size: 14px;
   }
   .reader-layout {
     grid-template-columns: minmax(0, 1fr) 200px;
@@ -2637,14 +2637,14 @@ main {
     padding: 30px 25px 20px;
   }
   .reader-aside h3 {
-    font-size: 20px;
+    font-size: 22px;
   }
   .toolbar-controls {
     gap: 7px;
   }
   .reader-toolbar select {
     max-width: 77px;
-    font-size: 9px;
+    font-size: 14px;
   }
   .font-controls {
     gap: 5px;
@@ -2659,16 +2659,16 @@ main {
     padding: 23px 20px;
   }
   .reading-hint {
-    font-size: 7px;
+    font-size: 13px;
   }
   .reader-aside-heading > h2 {
-    font-size: 11px;
+    font-size: 16px;
   }
   .translation-card {
     padding: 15px;
   }
   .translation-card h3 {
-    font-size: 24px;
+    font-size: 26px;
   }
   .consent-banner {
     left: 196px;
@@ -2693,7 +2693,7 @@ main {
     padding: 24px;
   }
   .listening-body h2 {
-    font-size: 26px;
+    font-size: 32px;
   }
   .listening-actions {
     gap: 10px;
@@ -2702,7 +2702,7 @@ main {
     max-width: 170px;
   }
   .listening-actions .primary-button {
-    font-size: 10px;
+    font-size: 14px;
     padding: 11px 13px;
     gap: 8px;
   }
@@ -2713,7 +2713,7 @@ main {
     padding: 20px;
   }
   .overview-stats strong {
-    font-size: 26px;
+    font-size: 32px;
   }
 }
 @media (max-width: 760px) {
@@ -2752,7 +2752,7 @@ main {
     min-height: 52px;
     padding: 7px 0;
     border-radius: 9px;
-    font-size: 8px;
+    font-size: 13px;
   }
   .nav-item svg {
     width: 19px;
@@ -2763,7 +2763,7 @@ main {
   }
   .nav-item:first-child span:not(.nav-count):after {
     content: "Мой прогресс";
-    font-size: 8px;
+    font-size: 13px;
   }
   .nav-count {
     display: none;
@@ -2778,7 +2778,7 @@ main {
     background: #fff;
   }
   .breadcrumbs {
-    font-size: 10px;
+    font-size: 14px;
     gap: 7px;
   }
   .breadcrumbs > span {
@@ -2789,7 +2789,7 @@ main {
   .breadcrumbs > span:after {
     content: "lumi.";
     font-family: "DM Sans", sans-serif;
-    font-size: 24px;
+    font-size: 26px;
     color: #78629a;
   }
   .breadcrumbs svg {
@@ -2799,13 +2799,13 @@ main {
     gap: 13px;
   }
   .no-rush {
-    font-size: 8px;
+    font-size: 13px;
     gap: 5px;
   }
   .avatar {
     width: 28px;
     height: 28px;
-    font-size: 15px;
+    font-size: 20px;
   }
   .library-page,
   .standard-page {
@@ -2815,17 +2815,17 @@ main {
     margin-bottom: 23px;
   }
   .eyebrow {
-    font-size: 7px;
+    font-size: 13px;
     letter-spacing: 1.3px;
     margin-bottom: 12px;
   }
   .page-heading h1 {
-    font-size: 29px;
+    font-size: 32px;
     line-height: 1.3;
     max-width: 330px;
   }
   .page-heading h1 .serif {
-    font-size: 33px;
+    font-size: 38px;
     white-space: nowrap;
     display: block;
   }
@@ -2836,7 +2836,7 @@ main {
     width: 25px;
   }
   .page-heading p {
-    font-size: 10px;
+    font-size: 14px;
     line-height: 1.9;
     max-width: 285px;
     margin-top: 10px;
@@ -2856,7 +2856,7 @@ main {
     pointer-events: auto;
     position: relative;
     z-index: 3;
-    font-size: 10px;
+    font-size: 14px;
     padding: 12px 13px;
     gap: 14px;
     white-space: nowrap;
@@ -2874,11 +2874,11 @@ main {
     object-fit: cover;
   }
   .featured-content h2 {
-    font-size: 45px;
+    font-size: 52px;
     margin-bottom: 12px;
   }
   .feature-tag {
-    font-size: 5px;
+    font-size: 13px;
     line-height: 1.8;
     letter-spacing: 0.6px;
     margin-bottom: 18px;
@@ -2888,12 +2888,12 @@ main {
     width: 10px;
   }
   .feature-author {
-    font-size: 8px;
+    font-size: 13px;
     line-height: 1.8;
     max-width: 130px;
   }
   .feature-description {
-    font-size: 9px;
+    font-size: 14px;
     line-height: 1.8;
     max-width: 155px;
   }
@@ -2901,7 +2901,7 @@ main {
     display: none;
   }
   .book-meta {
-    font-size: 7px;
+    font-size: 13px;
     gap: 6px;
     flex-wrap: wrap;
     max-width: 165px;
@@ -2912,13 +2912,13 @@ main {
     display: none;
   }
   .feature-footnote {
-    font-size: 6px;
+    font-size: 13px;
     line-height: 1.9;
     max-width: 150px;
     margin-top: 11px;
   }
   .title-star {
-    font-size: 25px;
+    font-size: 26px;
     right: -35px;
     bottom: 0;
   }
@@ -2934,10 +2934,10 @@ main {
     gap: 7px;
   }
   .floating-word strong {
-    font-size: 15px;
+    font-size: 20px;
   }
   .floating-word div > span {
-    font-size: 7px;
+    font-size: 13px;
   }
   .floating-volume {
     padding: 5px;
@@ -2946,7 +2946,7 @@ main {
     width: 13px;
   }
   .floating-plus {
-    font-size: 17px;
+    font-size: 20px;
   }
   .benefit-strip {
     grid-template-columns: 1fr;
@@ -2962,10 +2962,10 @@ main {
     height: 34px;
   }
   .benefit-strip strong {
-    font-size: 10px;
+    font-size: 14px;
   }
   .benefit-strip small {
-    font-size: 9px;
+    font-size: 14px;
     margin-top: 4px;
   }
   .section-heading {
@@ -2973,11 +2973,11 @@ main {
     gap: 10px;
   }
   .section-heading h2 {
-    font-size: 17px;
+    font-size: 20px;
     white-space: nowrap;
   }
   .section-heading h2 > span {
-    font-size: 8px;
+    font-size: 13px;
   }
   .search-box {
     gap: 4px;
@@ -2989,14 +2989,14 @@ main {
   .search-box input {
     width: 108px;
     padding: 4px 0;
-    font-size: 8px;
+    font-size: 13px;
   }
   .shelf-tabs {
     margin-top: 20px;
     gap: 23px;
   }
   .shelf-tabs button {
-    font-size: 9px;
+    font-size: 14px;
   }
   .shelf-grid {
     grid-template-columns: 1fr 1fr;
@@ -3009,39 +3009,39 @@ main {
     inset: 19px 8px 15px;
   }
   .cover-type strong {
-    font-size: 31px;
+    font-size: 38px;
     margin-top: 12px;
   }
   .cover-type > span:first-child {
-    font-size: 4px;
+    font-size: 13px;
     letter-spacing: 1px;
   }
   .cover-bottom {
-    font-size: 4px;
+    font-size: 13px;
     letter-spacing: 0.9px;
   }
   .cover-level {
     top: 9px;
     left: 9px;
-    font-size: 7px;
+    font-size: 13px;
   }
   .shelf-info {
     padding: 13px 12px;
   }
   .shelf-info-title h3 {
-    font-size: 10px;
+    font-size: 14px;
     line-height: 1.7;
   }
   .small-arrow {
     display: none;
   }
   .shelf-info > p {
-    font-size: 7px;
+    font-size: 13px;
     line-height: 1.7;
     margin-top: 4px;
   }
   .progress-row {
-    font-size: 6px;
+    font-size: 13px;
     margin-top: 13px;
     gap: 3px;
   }
@@ -3055,15 +3055,15 @@ main {
     transform: scale(0.85);
   }
   .import-card h3 {
-    font-size: 10px;
+    font-size: 14px;
     line-height: 1.7;
   }
   .import-card p {
-    font-size: 8px;
+    font-size: 13px;
     line-height: 1.8;
   }
   .import-action {
-    font-size: 8px;
+    font-size: 13px;
     padding: 9px;
     margin-top: 15px;
     gap: 5px;
@@ -3072,7 +3072,7 @@ main {
     width: 13px;
   }
   .import-card small {
-    font-size: 6px;
+    font-size: 13px;
     line-height: 1.8;
     max-width: 115px;
   }
@@ -3082,7 +3082,7 @@ main {
     align-items: center;
   }
   .library-quote p {
-    font-size: 11px;
+    font-size: 16px;
     line-height: 1.7;
     max-width: 255px;
   }
@@ -3098,14 +3098,14 @@ main {
     flex-wrap: wrap;
   }
   .footer-brand {
-    font-size: 17px;
+    font-size: 20px;
   }
   .footer > div {
     gap: 15px;
   }
   .footer button,
   .visitor-count {
-    font-size: 7px;
+    font-size: 13px;
     gap: 4px;
   }
   .footer svg {
@@ -3121,11 +3121,11 @@ main {
     max-width: 460px;
   }
   .consent-banner-copy h2 {
-    font-size: 12px;
+    font-size: 16px;
     color: #79628d;
   }
   .consent-banner-copy p {
-    font-size: 9px;
+    font-size: 14px;
     margin-top: 6px;
     line-height: 1.9;
   }
@@ -3136,7 +3136,7 @@ main {
     gap: 7px;
   }
   .consent-button {
-    font-size: 8px;
+    font-size: 13px;
     padding: 10px;
     flex-grow: 1;
     white-space: normal;
@@ -3149,26 +3149,26 @@ main {
     max-height: calc(100dvh - 28px);
   }
   .consent-dialog h2 {
-    font-size: 27px;
+    font-size: 32px;
   }
   .consent-option {
     padding: 15px 12px;
     gap: 10px;
   }
   .consent-option p {
-    font-size: 9px;
+    font-size: 14px;
   }
   .consent-option h3 {
-    font-size: 10px;
+    font-size: 14px;
   }
   .consent-required {
-    font-size: 7px;
+    font-size: 13px;
   }
   .consent-dialog-actions {
     gap: 8px;
   }
   .consent-description {
-    font-size: 10px;
+    font-size: 14px;
   }
   .consent-dialog-close {
     top: 17px;
@@ -3177,7 +3177,7 @@ main {
   .toast {
     left: 50%;
     bottom: calc(84px + env(safe-area-inset-bottom));
-    font-size: 10px;
+    font-size: 14px;
     min-width: 260px;
     max-width: calc(100vw - 30px);
     padding: 13px 15px;
@@ -3186,25 +3186,25 @@ main {
     padding-bottom: 30px;
   }
   .standard-page h1 {
-    font-size: 30px;
+    font-size: 32px;
     line-height: 1.35;
   }
   .standard-page h1 .serif {
-    font-size: 33px;
+    font-size: 38px;
   }
   .page-description {
-    font-size: 10px;
+    font-size: 14px;
   }
   .dictionary-toolbar {
     margin-top: 25px;
-    font-size: 9px;
+    font-size: 14px;
     gap: 9px;
   }
   .dictionary-toolbar small {
     display: none;
   }
   .dictionary-toolbar .secondary-button {
-    font-size: 8px;
+    font-size: 13px;
     padding: 10px;
   }
   .word-grid {
@@ -3215,13 +3215,13 @@ main {
     padding: 15px;
   }
   .word-card h2 {
-    font-size: 23px;
+    font-size: 26px;
   }
   .word-card > p {
-    font-size: 10px;
+    font-size: 14px;
   }
   .word-card > blockquote {
-    font-size: 11px;
+    font-size: 16px;
     margin: 15px 0;
     max-height: 112px;
   }
@@ -3229,11 +3229,11 @@ main {
     min-height: 350px;
   }
   .large-empty > h2 {
-    font-size: 23px;
+    font-size: 26px;
     line-height: 1.5;
   }
   .large-empty > p {
-    font-size: 10px;
+    font-size: 14px;
   }
   .practice-area {
     margin-top: 30px;
@@ -3242,10 +3242,10 @@ main {
     min-height: 290px;
   }
   .flashcard h2 {
-    font-size: 34px;
+    font-size: 38px;
   }
   .flashcard > p {
-    font-size: 10px;
+    font-size: 14px;
   }
   .practice-controls {
     gap: 10px;
@@ -3253,11 +3253,11 @@ main {
   .practice-controls .primary-button {
     gap: 10px;
     padding: 12px 15px;
-    font-size: 10px;
+    font-size: 14px;
   }
   .practice-controls .secondary-button {
     padding: 12px 15px;
-    font-size: 10px;
+    font-size: 14px;
   }
   .listening-player {
     grid-template-columns: 1fr;
@@ -3281,11 +3281,11 @@ main {
     padding: 27px;
   }
   .listening-body .feature-tag {
-    font-size: 7px;
+    font-size: 13px;
     max-width: none;
   }
   .listening-body h2 {
-    font-size: 31px;
+    font-size: 38px;
   }
   .listening-actions {
     justify-content: space-between;
@@ -3306,14 +3306,14 @@ main {
     gap: 12px;
   }
   .overview-stats strong {
-    font-size: 23px;
+    font-size: 26px;
     line-height: 1.2;
   }
   .overview-stats > div:last-child strong {
-    font-size: 21px;
+    font-size: 26px;
   }
   .overview-stats span {
-    font-size: 8px;
+    font-size: 13px;
     line-height: 1.6;
   }
   .overview-stats svg {
@@ -3329,20 +3329,20 @@ main {
     padding: 27px;
   }
   .overview-continue h2 {
-    font-size: 36px;
+    font-size: 44px;
   }
   .overview-continue p {
-    font-size: 11px;
+    font-size: 16px;
   }
   .preferences-nudge {
     align-items: flex-start;
-    font-size: 9px;
+    font-size: 14px;
     gap: 8px;
     flex-wrap: wrap;
   }
   .preferences-nudge .text-button {
     margin-left: 25px;
-    font-size: 9px;
+    font-size: 14px;
   }
   .reader-page {
     padding: 20px 16px 27px;
@@ -3352,18 +3352,18 @@ main {
     gap: 8px;
   }
   .back-button {
-    font-size: 9px;
+    font-size: 14px;
     gap: 5px;
   }
   .reader-book-name {
-    font-size: 14px;
+    font-size: 18px;
     max-width: 130px;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
   }
   .reader-progress-label {
-    font-size: 8px;
+    font-size: 13px;
   }
   .reader-toolbar {
     padding: 9px 10px;
@@ -3372,7 +3372,7 @@ main {
     margin-bottom: 17px;
   }
   .chapter-toggle {
-    font-size: 9px;
+    font-size: 14px;
     gap: 7px;
   }
   .chapter-toggle svg:last-child {
@@ -3386,7 +3386,7 @@ main {
     gap: 3px;
   }
   .font-controls > button {
-    font-size: 12px;
+    font-size: 16px;
     padding: 5px;
   }
   .theme-controls {
@@ -3400,7 +3400,7 @@ main {
     width: 14px;
   }
   .toolbar-controls select {
-    font-size: 8px;
+    font-size: 13px;
     max-width: 77px;
   }
   .toolbar-controls .icon-button {
@@ -3416,16 +3416,16 @@ main {
     padding: 32px 25px 25px;
   }
   .reading-paper h1 {
-    font-size: 30px;
+    font-size: 32px;
   }
   .chapter-kicker {
-    font-size: 8px;
+    font-size: 13px;
   }
   .chapter-subtitle {
-    font-size: 10px;
+    font-size: 14px;
   }
   .reading-hint {
-    font-size: 8px;
+    font-size: 13px;
     line-height: 1.7;
     text-align: center;
     gap: 6px;
@@ -3474,22 +3474,22 @@ main {
   }
   .reader-aside:has(.translation-card) .translation-card h3 {
     max-height: 120px;
-    font-size: 25px;
+    font-size: 26px;
   }
   .reader-aside:has(.translation-card) .translation-card-top {
-    font-size: 8px;
+    font-size: 13px;
     margin-bottom: 10px;
   }
   .reader-aside:has(.translation-card) .translated-text {
     margin: 15px 0;
-    font-size: 17px;
+    font-size: 20px;
   }
   .reader-aside:has(.translation-card) .context-box {
     margin-top: 15px;
     padding-top: 12px;
   }
   .reader-aside:has(.translation-card) .context-box p {
-    font-size: 14px;
+    font-size: 18px;
     max-height: 100px;
     overflow: auto;
   }
@@ -3501,19 +3501,19 @@ main {
     padding: 18px;
   }
   .chapter-vocabulary > button {
-    font-size: 17px;
+    font-size: 20px;
   }
   .vocabulary-heading h3 {
-    font-size: 12px;
+    font-size: 16px;
   }
   .vocabulary-heading > span {
-    font-size: 10px;
+    font-size: 14px;
   }
   .chapter-pagination {
-    font-size: 9px;
+    font-size: 14px;
   }
   .content-note {
-    font-size: 8px;
+    font-size: 13px;
   }
   .chapter-dropdown {
     left: 16px;
@@ -3523,11 +3523,11 @@ main {
     padding: 15px;
   }
   .chapter-dropdown > button {
-    font-size: 11px;
+    font-size: 16px;
     padding: 13px 8px;
   }
   .selection-translate {
-    font-size: 11px;
+    font-size: 16px;
     padding: 12px 15px;
   }
   .theme-dark .reader-aside:has(.translation-card) {
@@ -3541,17 +3541,17 @@ main {
     padding-right: 17px;
   }
   .page-heading h1 {
-    font-size: 27px;
+    font-size: 32px;
   }
   .page-heading h1 .serif {
-    font-size: 31px;
+    font-size: 38px;
   }
   .featured-content {
     padding-left: 18px;
     width: 65%;
   }
   .featured-content h2 {
-    font-size: 42px;
+    font-size: 52px;
   }
   .floating-word {
     left: 0;
@@ -3560,7 +3560,7 @@ main {
     gap: 5px;
   }
   .floating-word strong {
-    font-size: 14px;
+    font-size: 18px;
   }
   .floating-volume {
     padding: 4px;
@@ -3569,19 +3569,19 @@ main {
     display: none;
   }
   .section-heading h2 {
-    font-size: 15px;
+    font-size: 20px;
   }
   .search-box input {
     width: 94px;
   }
   .shelf-info-title h3 {
-    font-size: 9px;
+    font-size: 14px;
   }
   .import-card h3 {
-    font-size: 9px;
+    font-size: 14px;
   }
   .cover-type strong {
-    font-size: 28px;
+    font-size: 32px;
   }
   .mini-cover {
     height: 174px;
@@ -3594,7 +3594,7 @@ main {
     padding-right: 20px;
   }
   .reading-paper h1 {
-    font-size: 27px;
+    font-size: 32px;
   }
   .reader-toolbar {
     padding: 8px;
@@ -3603,7 +3603,7 @@ main {
     gap: 5px;
   }
   .chapter-toggle {
-    font-size: 8px;
+    font-size: 13px;
     gap: 4px;
   }
   .chapter-toggle svg {
@@ -3613,7 +3613,7 @@ main {
     padding: 5px;
   }
   .toolbar-controls select {
-    font-size: 8px;
+    font-size: 13px;
     max-width: 65px;
   }
   .theme-controls {
@@ -3623,13 +3623,13 @@ main {
     width: 16px;
   }
   .reader-heading {
-    font-size: 9px;
+    font-size: 14px;
   }
   .consent-banner-actions {
     gap: 5px;
   }
   .consent-button {
-    font-size: 7px;
+    font-size: 13px;
     padding: 10px 8px;
   }
   .footer > div {
@@ -3660,20 +3660,20 @@ main {
   --muted: #716e7d;
 }
 .feature-description {
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.8;
 }
 .feature-author {
-  font-size: 11px;
+  font-size: 16px;
 }
 .feature-tag {
-  font-size: 9px;
+  font-size: 14px;
 }
 .book-meta {
-  font-size: 10px;
+  font-size: 14px;
 }
 .feature-footnote {
-  font-size: 9px;
+  font-size: 14px;
 }
 .feature-tag,
 .feature-author,
@@ -3683,88 +3683,88 @@ main {
   color: #776582;
 }
 .page-heading p {
-  font-size: 12px;
+  font-size: 16px;
   color: #777180;
 }
 .benefit-strip strong {
-  font-size: 11px;
+  font-size: 16px;
 }
 .benefit-strip small {
-  font-size: 10px;
+  font-size: 14px;
 }
 .shelf-info > p {
-  font-size: 10px;
+  font-size: 14px;
 }
 .progress-row {
-  font-size: 9px;
+  font-size: 14px;
 }
 .import-card p,
 .discovery-card p {
-  font-size: 11px;
+  font-size: 16px;
 }
 .import-card small {
-  font-size: 9px;
+  font-size: 14px;
 }
 .import-action,
 .discovery-card .text-button {
-  font-size: 10px;
+  font-size: 14px;
 }
 .footer button,
 .visitor-count {
-  font-size: 10px;
+  font-size: 14px;
 }
 .footer-brand > span {
-  font-size: 9px;
+  font-size: 14px;
 }
 .reading-hint {
-  font-size: 10px;
+  font-size: 14px;
 }
 .content-note {
-  font-size: 10px;
+  font-size: 14px;
 }
 .translation-card-top,
 .translation-language,
 .translation-source {
-  font-size: 9px;
+  font-size: 14px;
 }
 .context-box > span {
-  font-size: 9px;
+  font-size: 14px;
 }
 .context-box p {
-  font-size: 14px;
+  font-size: 18px;
   color: #756382;
 }
 .context-box .context-translated {
   font-family: "Manrope", sans-serif;
   font-style: normal;
-  font-size: 11px;
+  font-size: 16px;
   line-height: 1.9;
   color: #655070;
   margin-top: 12px;
 }
 .save-word-button {
-  font-size: 10px;
+  font-size: 14px;
 }
 .vocabulary-heading h3 {
-  font-size: 11px;
+  font-size: 16px;
 }
 .reading-privacy {
-  font-size: 9px;
+  font-size: 14px;
 }
 .translation-empty p {
-  font-size: 11px;
+  font-size: 16px;
 }
 .sample-word > span {
-  font-size: 9px;
+  font-size: 14px;
 }
 .chapter-subtitle {
-  font-size: 11px;
+  font-size: 16px;
 }
 .chapter-pagination {
-  font-size: 10px;
+  font-size: 14px;
 }
 .complete-button {
-  font-size: 11px;
+  font-size: 16px;
 }
 .translation-error {
   color: #915064;
@@ -3783,16 +3783,16 @@ main {
 }
 .consent-banner-copy > strong {
   display: block;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 600;
   color: #64516f;
 }
 .consent-banner-copy p {
-  font-size: 10px;
+  font-size: 14px;
   color: #766180;
 }
 .consent-option strong {
-  font-size: 11px;
+  font-size: 16px;
   color: #705679;
 }
 .consent-close {
@@ -3801,17 +3801,17 @@ main {
   top: 18px;
 }
 .consent-description {
-  font-size: 12px;
+  font-size: 16px;
 }
 .consent-option p,
 .consent-policy-copy {
-  font-size: 11px;
+  font-size: 16px;
 }
 .consent-button {
-  font-size: 10px;
+  font-size: 14px;
 }
 .consent-footnote {
-  font-size: 10px;
+  font-size: 14px;
 }
 .consent-option strong,
 .consent-option p {
@@ -3823,29 +3823,29 @@ main {
 }
 @media (max-width: 1000px) and (min-width: 761px) {
   .feature-description {
-    font-size: 11px;
+    font-size: 16px;
   }
   .feature-tag {
-    font-size: 7px;
+    font-size: 13px;
   }
   .book-meta {
-    font-size: 9px;
+    font-size: 14px;
   }
   .feature-footnote {
-    font-size: 8px;
+    font-size: 13px;
   }
   .benefit-strip strong {
-    font-size: 9px;
+    font-size: 14px;
   }
   .benefit-strip small {
-    font-size: 8px;
+    font-size: 13px;
   }
   .consent-button {
-    font-size: 9px;
+    font-size: 14px;
   }
   .footer button,
   .visitor-count {
-    font-size: 9px;
+    font-size: 14px;
   }
 }
 @media (max-width: 760px) {
@@ -3869,25 +3869,25 @@ main {
     );
   }
   .featured-content h2 {
-    font-size: 44px;
+    font-size: 52px;
   }
   .feature-tag {
-    font-size: 6px;
+    font-size: 13px;
     max-width: 155px;
   }
   .feature-author {
-    font-size: 9px;
+    font-size: 14px;
     max-width: 165px;
   }
   .feature-description {
-    font-size: 10px;
+    font-size: 14px;
     max-width: 180px;
   }
   .book-meta {
-    font-size: 8px;
+    font-size: 13px;
   }
   .feature-footnote {
-    font-size: 7px;
+    font-size: 13px;
   }
   .floating-word {
     bottom: 94px;
@@ -3897,71 +3897,71 @@ main {
     padding: 9px 8px;
   }
   .floating-word strong {
-    font-size: 14px;
+    font-size: 18px;
   }
   .floating-volume {
     display: none;
   }
   .floating-plus {
-    font-size: 15px;
+    font-size: 20px;
   }
   .floating-word div > span {
-    font-size: 8px;
+    font-size: 13px;
   }
   .page-heading p {
-    font-size: 11px;
+    font-size: 16px;
   }
   .benefit-strip strong {
-    font-size: 11px;
+    font-size: 16px;
   }
   .benefit-strip small {
-    font-size: 10px;
+    font-size: 14px;
   }
   .shelf-info > p {
-    font-size: 8px;
+    font-size: 13px;
   }
   .progress-row {
-    font-size: 7px;
+    font-size: 13px;
   }
   .import-card p {
-    font-size: 9px;
+    font-size: 14px;
   }
   .import-card small {
-    font-size: 7px;
+    font-size: 13px;
   }
   .import-action {
-    font-size: 9px;
+    font-size: 14px;
   }
   .footer button,
   .visitor-count {
-    font-size: 8px;
+    font-size: 13px;
   }
   .reading-hint {
-    font-size: 9px;
+    font-size: 14px;
   }
   .content-note {
-    font-size: 9px;
+    font-size: 14px;
   }
   .consent-banner-copy p {
-    font-size: 10px;
+    font-size: 14px;
   }
   .consent-button {
-    font-size: 9px;
+    font-size: 14px;
   }
   .consent-option p {
-    font-size: 10px;
+    font-size: 14px;
   }
   .consent-policy-copy {
-    font-size: 11px;
+    font-size: 16px;
   }
   .consent-footnote {
-    font-size: 10px;
+    font-size: 14px;
   }
   .nav-item {
-    font-size: 9px;
+    font-size: 14px;
   }
   .nav-item:first-child span:not(.nav-count):after {
-    font-size: 9px;
+    font-size: 14px;
   }
   .theme-dark .context-translated {
     color: #d5c2e3;
@@ -3969,20 +3969,20 @@ main {
 }
 @media (max-width: 370px) {
   .featured-content h2 {
-    font-size: 41px;
+    font-size: 52px;
   }
   .feature-description {
-    font-size: 9px;
+    font-size: 14px;
     max-width: 158px;
   }
   .feature-author {
-    font-size: 8px;
+    font-size: 13px;
   }
   .feature-tag {
-    font-size: 5px;
+    font-size: 13px;
   }
   .feature-footnote {
-    font-size: 6px;
+    font-size: 13px;
   }
   .floating-word {
     min-width: 95px;
@@ -3991,26 +3991,26 @@ main {
     bottom: 85px;
   }
   .floating-word strong {
-    font-size: 13px;
+    font-size: 18px;
   }
   .floating-word div > span {
-    font-size: 7px;
+    font-size: 13px;
   }
   .floating-plus {
     display: none;
   }
   .consent-button {
-    font-size: 8px;
+    font-size: 13px;
   }
   .footer button,
   .visitor-count {
-    font-size: 7px;
+    font-size: 13px;
   }
   .nav-item {
-    font-size: 8px;
+    font-size: 13px;
   }
   .nav-item:first-child span:not(.nav-count):after {
-    font-size: 8px;
+    font-size: 13px;
   }
 }
 

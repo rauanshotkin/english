@@ -79,21 +79,19 @@ export async function requestTranslation(
     )
       throw new Error("Сервис не предоставил перевод. Попробуйте позже.");
     return {
-      translation: translated
-        .trim()
-        .replace(
-          /&(amp|lt|gt|quot|apos|#39|#x27);/g,
-          (_, entity: string) =>
-            ({
-              amp: "&",
-              lt: "<",
-              gt: ">",
-              quot: '"',
-              apos: "'",
-              "#39": "'",
-              "#x27": "'",
-            })[entity] ?? _,
-        ),
+      translation: translated.trim().replace(
+        /&(amp|lt|gt|quot|apos|#39|#x27);/g,
+        (_, entity: string) =>
+          ({
+            amp: "&",
+            lt: "<",
+            gt: ">",
+            quot: '"',
+            apos: "'",
+            "#39": "'",
+            "#x27": "'",
+          })[entity] ?? _,
+      ),
       source: "mymemory",
     };
   } catch (error) {
