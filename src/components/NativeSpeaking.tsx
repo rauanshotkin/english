@@ -99,6 +99,10 @@ function matchesPhrase(phrase: NativePhrase, query: string) {
     phrase.ru,
     phrase.example,
     phrase.note,
+    phrase.comparison.simpleEnglish,
+    phrase.comparison.simpleRu,
+    phrase.comparison.simpleKk,
+    phrase.comparison.memoryTip,
     registerLabels[phrase.register],
   ].some((value) => normalize(value).includes(query));
 }
@@ -137,6 +141,10 @@ export default function NativeSpeaking({
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [group, setGroup] = useState("all");
   const [search, setSearch] = useState("");
+  const [studyMode, setStudyMode] = useState<"compare" | "recall">("compare");
+  const [revealedPhrases, setRevealedPhrases] = useState<Set<string>>(
+    () => new Set(),
+  );
   const libraryScroll = useRef(0);
   const detailHeading = useRef<HTMLHeadingElement>(null);
   const query = normalize(search);
@@ -172,23 +180,49 @@ export default function NativeSpeaking({
     );
 
   useEffect(() => {
-    if (selectedId) detailHeading.current?.focus({ preventScroll: true });
+    if (!selectedId) return;
+    const firstMatch = query
+      ? document.querySelector<HTMLElement>(".native-phrase.is-match")
+      : null;
+    if (firstMatch) {
+      firstMatch.focus({ preventScroll: true });
+      firstMatch.scrollIntoView({ block: "start", behavior: "instant" });
+    } else {
+      detailHeading.current?.focus({ preventScroll: true });
+    }
   }, [selectedId]);
 
   function openSituation(situation: NativeSituation) {
     libraryScroll.current = window.scrollY;
+    setStudyMode("compare");
+    setRevealedPhrases(new Set());
     setSelectedId(situation.id);
     window.scrollTo({ top: 0, behavior: "instant" });
   }
 
   function returnToLibrary() {
     const previousId = selectedId;
+    setRevealedPhrases(new Set());
     setSelectedId(null);
     requestAnimationFrame(() => {
       window.scrollTo({ top: libraryScroll.current, behavior: "instant" });
       document
         .getElementById(`native-situation-${previousId}`)
         ?.focus({ preventScroll: true });
+    });
+  }
+
+  function changeStudyMode(mode: "compare" | "recall") {
+    setStudyMode(mode);
+    setRevealedPhrases(new Set());
+  }
+
+  function toggleAnswer(phraseId: string) {
+    setRevealedPhrases((current) => {
+      const next = new Set(current);
+      if (next.has(phraseId)) next.delete(phraseId);
+      else next.add(phraseId);
+      return next;
     });
   }
 
@@ -223,8 +257,9 @@ export default function NativeSpeaking({
             как <span className="serif">носитель</span>
           </h1>
           <p className="native-description">
-            Естественные фразы для реальных ситуаций. Перевод, примеры и
-            озвучивание помогут начать разговор.
+            Одна мысль — два способа сказать. Сравнивайте простую фразу с
+            разговорным выражением, запоминайте образы и пробуйте вспомнить
+            вслух.
           </p>
           <div className="native-hero-tags">
             <span>
@@ -233,7 +268,7 @@ export default function NativeSpeaking({
             </span>
             <span>
               <BookOpen size={17} aria-hidden="true" />
-              {totalNativePhrases} фраз
+              {totalNativePhrases} пар фраз
             </span>
             <span>
               <Volume2 size={17} aria-hidden="true" />С озвучиванием
@@ -241,11 +276,11 @@ export default function NativeSpeaking({
           </div>
         </div>
         <div className="native-hero-art" aria-hidden="true">
+          <span className="native-chat-bubble">I’m very busy.</span>
+          <ArrowRight className="native-chat-arrow" size={24} />
           <span className="native-chat-bubble">
-            <Volume2 size={17} /> Sounds good!
+            I’ve got a lot on my plate.
           </span>
-          <span className="native-chat-bubble">I’m on my way.</span>
-          <span className="native-chat-bubble">You’ve got this.</span>
           <Sparkles className="native-hero-star" size={27} />
         </div>
       </header>
@@ -271,7 +306,7 @@ export default function NativeSpeaking({
           <div className="native-detail-note">
             <span>
               <MessageCircle size={16} aria-hidden="true" />
-              Все {selectedSituation.phrases.length} фраз
+              {selectedSituation.phrases.length} пар фраз
             </span>
             <span>
               <Bookmark size={16} aria-hidden="true" />В словаре:{" "}
@@ -279,6 +314,41 @@ export default function NativeSpeaking({
             </span>
             <span>{groupName(selectedSituation.group)}</span>
           </div>
+          <div className="native-study-toolbar">
+            <div
+              className="native-study-modes"
+              role="group"
+              aria-label="Способ изучения фраз"
+            >
+              <button
+                className={`native-study-mode${studyMode === "compare" ? " active" : ""}`}
+                data-mode="compare"
+                aria-pressed={studyMode === "compare"}
+                onClick={() => changeStudyMode("compare")}
+              >
+                <BookOpen size={18} aria-hidden="true" />
+                Сравнить
+              </button>
+              <button
+                className={`native-study-mode${studyMode === "recall" ? " active" : ""}`}
+                data-mode="recall"
+                aria-pressed={studyMode === "recall"}
+                onClick={() => changeStudyMode("recall")}
+              >
+                <Lightbulb size={18} aria-hidden="true" />
+                Вспомнить
+              </button>
+            </div>
+            <p>
+              {studyMode === "compare"
+                ? "Сравните смысл, послушайте оба варианта и придумайте свой пример."
+                : "Прочитайте простую фразу, вспомните выражение и откройте ответ."}
+            </p>
+          </div>
+          <p className="native-comparison-note">
+            Оба варианта правильные. Выбирайте выражение по ситуации и тону
+            разговора.
+          </p>
           {query && (
             <p className="native-search-note">
               Фразы по запросу «{search.trim()}» отмечены рамкой. Все 10 фраз
@@ -289,58 +359,136 @@ export default function NativeSpeaking({
             {selectedSituation.phrases.map((phrase, index) => {
               const saved = isSaved(phrase);
               const match = !!query && matchesPhrase(phrase, query);
+              const answerVisible =
+                studyMode === "compare" || revealedPhrases.has(phrase.id);
+              const answerId = `native-answer-${phrase.id}`;
               return (
                 <li
                   className={`native-phrase${match ? " is-match" : ""}`}
                   key={phrase.id}
+                  data-phrase-id={phrase.id}
+                  tabIndex={-1}
                 >
                   <div className="native-phrase-meta">
                     <span className="native-phrase-number" aria-hidden="true">
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                    <span className="native-register">
-                      {match && <Search size={13} aria-hidden="true" />}
-                      {registerLabels[phrase.register]}
+                    {match && (
+                      <span className="native-match-label">
+                        <Search size={15} aria-hidden="true" />
+                        По вашему запросу
+                      </span>
+                    )}
+                  </div>
+                  <div className="native-comparison">
+                    <div className="native-simple">
+                      <span className="native-pair-label">Просто</span>
+                      <p className="native-simple-english" lang="en">
+                        {phrase.comparison.simpleEnglish}
+                      </p>
+                      <p
+                        className="native-simple-translation"
+                        lang={targetLanguage}
+                      >
+                        {targetLanguage === "kk"
+                          ? phrase.comparison.simpleKk
+                          : phrase.comparison.simpleRu}
+                      </p>
+                      <button
+                        className="native-listen native-simple-listen"
+                        aria-label={`Послушать простую фразу: ${phrase.comparison.simpleEnglish}`}
+                        onClick={() => onSpeak(phrase.comparison.simpleEnglish)}
+                      >
+                        <Volume2 size={18} aria-hidden="true" />
+                        Послушать
+                      </button>
+                    </div>
+                    <span className="native-pair-arrow" aria-hidden="true">
+                      <ArrowRight size={22} />
                     </span>
-                  </div>
-                  <h3 lang="en">{phrase.english}</h3>
-                  <p
-                    className="native-phrase-translation"
-                    lang={targetLanguage}
-                  >
-                    {phrase[targetLanguage]}
-                  </p>
-                  <div className="native-example">
-                    <span>В разговоре</span>
-                    <p lang="en">{phrase.example}</p>
-                  </div>
-                  <p className="native-usage">
-                    <Info size={15} aria-hidden="true" />
-                    <span>{phrase.note}</span>
-                  </p>
-                  <div className="native-phrase-actions">
-                    <button
-                      className="native-listen"
-                      aria-label={`Послушать: ${phrase.english}`}
-                      onClick={() => onSpeak(phrase.english)}
+                    <div
+                      className={`native-answer${answerVisible ? " is-revealed" : ""}`}
+                      id={answerId}
                     >
-                      <Volume2 size={18} aria-hidden="true" />
-                      Послушать
-                    </button>
-                    <button
-                      className={`native-save${saved ? " is-saved" : ""}`}
-                      aria-label={`${saved ? "Убрать из словаря" : "Сохранить в словарь"}: ${phrase.english}`}
-                      aria-pressed={saved}
-                      onClick={() => onSavePhrase(phrase, selectedSituation)}
-                    >
-                      {saved ? (
-                        <Check size={18} aria-hidden="true" />
+                      <div className="native-answer-labels">
+                        <span className="native-pair-label">Естественно</span>
+                        {answerVisible && (
+                          <span className="native-register">
+                            {registerLabels[phrase.register]}
+                          </span>
+                        )}
+                      </div>
+                      {answerVisible ? (
+                        <>
+                          <h3 lang="en">{phrase.english}</h3>
+                          <p
+                            className="native-phrase-translation"
+                            lang={targetLanguage}
+                          >
+                            {phrase[targetLanguage]}
+                          </p>
+                          <div className="native-phrase-actions">
+                            <button
+                              className="native-listen"
+                              aria-label={`Послушать: ${phrase.english}`}
+                              onClick={() => onSpeak(phrase.english)}
+                            >
+                              <Volume2 size={18} aria-hidden="true" />
+                              Послушать
+                            </button>
+                            <button
+                              className={`native-save${saved ? " is-saved" : ""}`}
+                              aria-label={`${saved ? "Убрать из словаря" : "Сохранить в словарь"}: ${phrase.english}`}
+                              aria-pressed={saved}
+                              onClick={() =>
+                                onSavePhrase(phrase, selectedSituation)
+                              }
+                            >
+                              {saved ? (
+                                <Check size={18} aria-hidden="true" />
+                              ) : (
+                                <Bookmark size={17} aria-hidden="true" />
+                              )}
+                              {saved ? "В словаре" : "Сохранить"}
+                            </button>
+                          </div>
+                        </>
                       ) : (
-                        <Bookmark size={17} aria-hidden="true" />
+                        <p className="native-answer-cue">
+                          Как бы вы сказали эту мысль иначе?
+                        </p>
                       )}
-                      {saved ? "В словаре" : "Сохранить"}
-                    </button>
+                      {studyMode === "recall" && (
+                        <button
+                          className="native-reveal"
+                          aria-expanded={answerVisible}
+                          aria-controls={answerId}
+                          onClick={() => toggleAnswer(phrase.id)}
+                        >
+                          <Lightbulb size={18} aria-hidden="true" />
+                          {answerVisible
+                            ? "Скрыть выражение"
+                            : "Показать выражение"}
+                        </button>
+                      )}
+                    </div>
                   </div>
+                  {answerVisible && (
+                    <div className="native-pair-context">
+                      <p className="native-memory-tip">
+                        <Lightbulb size={19} aria-hidden="true" />
+                        <span>{phrase.comparison.memoryTip}</span>
+                      </p>
+                      <div className="native-example">
+                        <span>В разговоре</span>
+                        <p lang="en">{phrase.example}</p>
+                      </div>
+                      <p className="native-usage">
+                        <Info size={16} aria-hidden="true" />
+                        <span>{phrase.note}</span>
+                      </p>
+                    </div>
+                  )}
                 </li>
               );
             })}
@@ -405,7 +553,7 @@ export default function NativeSpeaking({
               {query ? "Результаты поиска" : "Выберите свою ситуацию"}
             </h2>
             <span aria-live="polite" aria-atomic="true">
-              Ситуаций: {results.length} · По 10 фраз
+              Ситуаций: {results.length} · По 10 пар
             </span>
           </div>
           {results.length ? (
@@ -430,6 +578,8 @@ export default function NativeSpeaking({
                   </p>
                   {query && phrases[0] && (
                     <p className="native-match-preview" lang="en">
+                      {phrases[0].comparison.simpleEnglish}
+                      <ArrowRight size={16} aria-hidden="true" />
                       {phrases[0].english}
                     </p>
                   )}
@@ -437,7 +587,7 @@ export default function NativeSpeaking({
                     <span>
                       {query
                         ? `Найдено: ${titleMatches ? 10 : phrases.length} из 10`
-                        : "10 фраз · Открыть"}
+                        : "10 пар фраз · Открыть"}
                     </span>
                     <ArrowRight size={19} aria-hidden="true" />
                   </span>
@@ -467,10 +617,11 @@ export default function NativeSpeaking({
           <aside className="native-library-tip">
             <Lightbulb size={20} aria-hidden="true" />
             <p>
-              Выберите ситуацию, послушайте фразу и произнесите её вслух.
-              Начните с пары выражений, которые пригодятся уже сегодня. Звучать
-              естественно — значит уместно выражать свои мысли, сохраняя свой
-              голос и акцент.
+              Начните с пары выражений, которые пригодятся уже сегодня: сравните
+              варианты, представьте образ из подсказки и проверьте себя в режиме
+              «Вспомнить». Оба варианта правильные; естественная речь учитывает
+              ситуацию и тон разговора. Уровни A1–C2 описывают владение языком в
+              целом.
             </p>
           </aside>
         </section>

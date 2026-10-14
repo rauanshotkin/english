@@ -1,3 +1,6 @@
+import { nativeComparisons } from "./nativeComparisons";
+import type { NativeComparison } from "./nativeComparisonTypes";
+
 export type NativeRegister = "neutral" | "casual" | "polite";
 
 export interface NativePhrase {
@@ -8,6 +11,7 @@ export interface NativePhrase {
   example: string;
   note: string;
   register: NativeRegister;
+  comparison: NativeComparison;
 }
 
 export type NativeGroupId =
@@ -61,6 +65,7 @@ function situation(
       example,
       note,
       register,
+      comparison: nativeComparisons[`${id}-${index + 1}`],
     })),
   };
 }
@@ -1127,11 +1132,11 @@ export const nativeSituations: NativeSituation[] = [
         "polite",
       ],
       [
-        "I'll take care of it.",
-        "Я этим займусь.",
-        "Мұны мен өзім реттеймін.",
-        "I'll take care of it and send you an update.",
-        "Берём задачу на себя.",
+        "I've got a lot on my plate.",
+        "У меня дел по горло.",
+        "Қазір шаруам көп.",
+        "I've got a lot on my plate this week. Could we talk tomorrow?",
+        "Когда много задач или забот. Подходит для обычной беседы и общения с коллегами.",
         "neutral",
       ],
     ],

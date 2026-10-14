@@ -1,8 +1,11 @@
 import assert from "node:assert/strict";
 import { existsSync } from "node:fs";
+import { mkdir } from "node:fs/promises";
+import { join } from "node:path";
 import { chromium } from "playwright";
 
 const baseURL = process.env.BASE_URL || "http://127.0.0.1:5173/";
+const screenshotDirectory = process.env.SCREENSHOTS_DIR;
 const executablePath =
   process.env.CHROMIUM_EXECUTABLE ||
   process.env.CHROMIUM_PATH ||
@@ -81,6 +84,39 @@ async function noOverflow(page) {
   assert.ok(metrics.scroll <= metrics.viewport, JSON.stringify(metrics));
 }
 
+async function assertHiddenAnswers(page) {
+  assert.equal(await page.locator(".native-answer h3[lang=en]").count(), 0);
+  assert.equal(await page.locator(".native-phrase-translation").count(), 0);
+  assert.equal(await page.locator(".native-example").count(), 0);
+  assert.equal(await page.locator(".native-memory-tip").count(), 0);
+  assert.equal(await page.locator(".native-phrase-actions button").count(), 0);
+  assert.equal(await page.locator(".native-simple-english").count(), 10);
+  assert.equal(await page.locator(".native-simple-translation").count(), 10);
+  assert.equal(await page.locator(".native-simple-listen").count(), 10);
+  for (const reveal of await page.locator(".native-reveal").all()) {
+    assert.equal(await reveal.getAttribute("aria-expanded"), "false");
+    const controlledId = await reveal.getAttribute("aria-controls");
+    assert.ok(controlledId);
+    assert.equal(await page.locator(`#${controlledId}`).count(), 1);
+  }
+}
+
+async function captureCard(page, name) {
+  if (!screenshotDirectory) return;
+  await mkdir(screenshotDirectory, { recursive: true });
+  const path = join(screenshotDirectory, `${name}.png`);
+  const card = page.locator(".native-phrase").first();
+  if (page.viewportSize().width <= 680) {
+    // Capture a real phone viewport: a long card continues below the fold.
+    await card.evaluate((element) => {
+      window.scrollTo(0, element.getBoundingClientRect().top + scrollY - 16);
+    });
+    await page.screenshot({ path });
+  } else {
+    await card.screenshot({ path });
+  }
+}
+
 try {
   const { context, page } = await freshPage();
   await openNative(page);
@@ -134,7 +170,7 @@ try {
   );
 
   await check(
-    "Every situation exposes exactly ten expressions with examples",
+    "All 240 comparison pairs expose both English variants, both translations and context",
     async () => {
       const ids = await page
         .locator(".native-situation-card")
@@ -143,6 +179,71 @@ try {
         await page.locator(`#${id}`).click();
         await page.locator(".native-phrase").nth(9).waitFor();
         assert.equal(await page.locator(".native-phrase").count(), 10, id);
+        assert.equal(
+          await page
+            .locator('.native-study-mode[data-mode="compare"]')
+            .getAttribute("aria-pressed"),
+          "true",
+          id,
+        );
+        const pairs = await page
+          .locator(".native-phrase")
+          .evaluateAll((cards) =>
+            cards.map((card) => ({
+              simple: card
+                .querySelector(".native-simple-english")
+                ?.textContent.trim(),
+              natural: card
+                .querySelector(".native-answer h3[lang=en]")
+                ?.textContent.trim(),
+              tip: card.querySelector(".native-memory-tip")?.textContent.trim(),
+            })),
+          );
+        assert.ok(
+          pairs.every(
+            (pair) =>
+              pair.simple &&
+              pair.natural &&
+              pair.tip &&
+              pair.simple.toLowerCase() !== pair.natural.toLowerCase(),
+          ),
+          `${id}: each pair needs distinct English variants and a memory tip`,
+        );
+        if (id === "native-situation-office") {
+          assert.equal(pairs[9].simple, "I'm very busy.");
+          assert.equal(pairs[9].natural, "I've got a lot on my plate.");
+        }
+        const language = page.getByRole("combobox", {
+          name: "Язык перевода фраз",
+        });
+        for (const target of ["kk", "ru"]) {
+          await language.selectOption(target);
+          const translations = await page
+            .locator(".native-phrase")
+            .evaluateAll((cards) =>
+              cards.flatMap((card) =>
+                [
+                  ".native-simple-translation",
+                  ".native-phrase-translation",
+                ].map((selector) => {
+                  const element = card.querySelector(selector);
+                  return {
+                    text: element?.textContent.trim(),
+                    language: element?.lang,
+                  };
+                }),
+              ),
+            );
+          assert.equal(translations.length, 20, id);
+          assert.ok(
+            translations.every(
+              (translation) =>
+                translation.text && translation.language === target,
+            ),
+            `${id}: ${target} translations`,
+          );
+        }
+        await language.selectOption("kk");
         assert.equal(
           await page.locator(".native-example p[lang=en]").count(),
           10,
@@ -158,6 +259,13 @@ try {
 
   await openCafe(page);
   const firstPhrase = page.locator(".native-phrase").first();
+  const simpleEnglish = await firstPhrase
+    .locator(".native-simple-english")
+    .innerText();
+  const simpleKk = await firstPhrase
+    .locator(".native-simple-translation")
+    .innerText();
+  let simpleRu;
   await check(
     "Translation defaults to Kazakh and switches to Russian",
     async () => {
@@ -174,7 +282,146 @@ try {
         await firstPhrase.locator(".native-phrase-translation").innerText(),
         "выпить кофе",
       );
+      simpleRu = await firstPhrase
+        .locator(".native-simple-translation")
+        .innerText();
+      assert.ok(simpleRu);
+      assert.notEqual(simpleRu, simpleKk);
       await language.selectOption("kk");
+      assert.equal(
+        await firstPhrase.locator(".native-simple-translation").innerText(),
+        simpleKk,
+      );
+    },
+  );
+
+  await check(
+    "Simple English, Russian and Kazakh variants are searchable",
+    async () => {
+      await page
+        .getByRole("button", { name: "Все ситуации", exact: true })
+        .click();
+      const search = page.getByRole("searchbox", {
+        name: "Поиск ситуаций и фраз",
+      });
+      for (const query of [simpleEnglish, simpleRu, simpleKk]) {
+        await search.fill(query);
+        await openCafe(page);
+        assert.ok(
+          (await firstPhrase.getAttribute("class"))
+            .split(" ")
+            .includes("is-match"),
+        );
+        await page
+          .getByRole("button", { name: "Все ситуации", exact: true })
+          .click();
+      }
+      await search.fill("busy");
+      await page.locator("#native-situation-office").click();
+      const matchedCard = page.locator(
+        '.native-phrase[data-phrase-id="office-10"]',
+      );
+      await matchedCard.waitFor();
+      await page.waitForFunction(
+        () =>
+          document.activeElement
+            ?.closest(".native-phrase")
+            ?.getAttribute("data-phrase-id") === "office-10",
+      );
+      const targetPosition = await matchedCard
+        .locator(".native-simple-english")
+        .evaluate((element) => ({
+          top: element.getBoundingClientRect().top,
+          bottom: element.getBoundingClientRect().bottom,
+          viewport: innerHeight,
+        }));
+      assert.ok(
+        targetPosition.top >= 0 &&
+          targetPosition.bottom <= targetPosition.viewport,
+        JSON.stringify(targetPosition),
+      );
+      assert.equal(
+        await matchedCard.locator(".native-simple-english").innerText(),
+        "I'm very busy.",
+      );
+      assert.equal(
+        await matchedCard.locator(".native-answer h3").innerText(),
+        "I've got a lot on my plate.",
+      );
+      assert.equal(await page.locator(".native-phrase").count(), 10);
+      await page
+        .getByRole("button", { name: "Все ситуации", exact: true })
+        .click();
+      await search.fill("");
+      await openCafe(page);
+    },
+  );
+
+  await check(
+    "Recall reveals one card without leaking other answers and resets between modes and situations",
+    async () => {
+      const recall = page.locator('.native-study-mode[data-mode="recall"]');
+      const compare = page.locator('.native-study-mode[data-mode="compare"]');
+      assert.equal(await compare.getAttribute("aria-pressed"), "true");
+      await recall.click();
+      assert.equal(await recall.getAttribute("aria-pressed"), "true");
+      await assertHiddenAnswers(page);
+      const reveal = firstPhrase.getByRole("button", {
+        name: "Показать выражение",
+        exact: true,
+      });
+      const answerId = await reveal.getAttribute("aria-controls");
+      await reveal.click();
+      assert.equal(
+        await firstPhrase
+          .locator(".native-reveal")
+          .getAttribute("aria-expanded"),
+        "true",
+      );
+      assert.equal(
+        await page.locator(`#${answerId} h3`).innerText(),
+        "grab a coffee",
+      );
+      assert.equal(await page.locator(".native-answer h3[lang=en]").count(), 1);
+      assert.equal(await page.locator(".native-example").count(), 1);
+      assert.equal(await page.locator(".native-memory-tip").count(), 1);
+      assert.equal(
+        await page.locator(".native-phrase-actions button").count(),
+        2,
+      );
+      assert.equal(
+        await page.locator('.native-reveal[aria-expanded="false"]').count(),
+        9,
+      );
+      await firstPhrase
+        .getByRole("button", { name: "Скрыть выражение", exact: true })
+        .click();
+      await assertHiddenAnswers(page);
+      await reveal.click();
+      await compare.click();
+      assert.equal(
+        await page.locator(".native-answer h3[lang=en]").count(),
+        10,
+      );
+      await recall.click();
+      await assertHiddenAnswers(page);
+      await reveal.click();
+      await page
+        .getByRole("button", { name: "Все ситуации", exact: true })
+        .click();
+      await page.locator("#native-situation-restaurant").click();
+      await page.locator(".native-phrase").nth(9).waitFor();
+      assert.equal(await compare.getAttribute("aria-pressed"), "true");
+      assert.equal(await page.locator(".native-reveal").count(), 0);
+      assert.equal(
+        await page.locator(".native-answer h3[lang=en]").count(),
+        10,
+      );
+      await page
+        .getByRole("button", { name: "Все ситуации", exact: true })
+        .click();
+      await openCafe(page);
+      assert.equal(await compare.getAttribute("aria-pressed"), "true");
     },
   );
 
@@ -220,6 +467,43 @@ try {
           .count(),
         0,
       );
+    },
+  );
+
+  await check(
+    "Simple and natural audio buttons pronounce their own English variants",
+    async () => {
+      await page.locator('.native-study-mode[data-mode="recall"]').click();
+      await firstPhrase
+        .getByRole("button", {
+          name: `Послушать простую фразу: ${simpleEnglish}`,
+          exact: true,
+        })
+        .click();
+      assert.deepEqual(
+        (await page.evaluate(() => window.__spokenPhrases)).at(-1),
+        { text: simpleEnglish, lang: "en-US" },
+      );
+      assert.equal(
+        await firstPhrase
+          .getByRole("button", {
+            name: "Послушать: grab a coffee",
+            exact: true,
+          })
+          .count(),
+        0,
+      );
+      await firstPhrase
+        .getByRole("button", { name: "Показать выражение", exact: true })
+        .click();
+      await firstPhrase
+        .getByRole("button", { name: "Послушать: grab a coffee", exact: true })
+        .click();
+      assert.deepEqual(
+        (await page.evaluate(() => window.__spokenPhrases)).at(-1),
+        { text: "grab a coffee", lang: "en-US" },
+      );
+      await page.locator('.native-study-mode[data-mode="compare"]').click();
     },
   );
 
@@ -364,7 +648,9 @@ try {
           );
         assert.ok(typography >= 16, `${typography}px`);
         const targets = await responsive
-          .locator(".native-phrase-actions button")
+          .locator(
+            ".native-phrase-actions button, .native-simple-listen, .native-study-mode",
+          )
           .evaluateAll((buttons) =>
             buttons.map((button) => ({
               width: button.getBoundingClientRect().width,
@@ -375,6 +661,29 @@ try {
           targets.every((target) => target.width >= 44 && target.height >= 44),
           JSON.stringify(targets),
         );
+        if (width === 320 || width === 1440)
+          await captureCard(responsive, `comparison-${width}`);
+        await responsive
+          .locator('.native-study-mode[data-mode="recall"]')
+          .click();
+        await noOverflow(responsive);
+        await assertHiddenAnswers(responsive);
+        const revealTargets = await responsive
+          .locator(".native-reveal")
+          .evaluateAll((buttons) =>
+            buttons.map((button) => ({
+              width: button.getBoundingClientRect().width,
+              height: button.getBoundingClientRect().height,
+            })),
+          );
+        assert.ok(
+          revealTargets.every(
+            (target) => target.width >= 44 && target.height >= 44,
+          ),
+          JSON.stringify(revealTargets),
+        );
+        if (width === 320 || width === 1440)
+          await captureCard(responsive, `recall-${width}`);
       },
     );
     if (width <= 1100) {
